@@ -1,12 +1,13 @@
-// src/components/Search.jsx
-import React, { useState } from "react";
-import BlogList from "./BlogList.jsx";
-import { getBlogs } from "../blogData.js";
+import React, { useState } from 'react';
+import BlogList from './BlogList.jsx';
+import { getBlogs } from '../blogData.js';
+import { useTheme } from '../ThemeContext.jsx';
 
 const Search = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [searchError, setSearchError] = useState(false);
   const [filteredBlogs, setFilteredBlogs] = useState([]);
+  const { isDarkMode } = useTheme();
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -25,18 +26,22 @@ const Search = () => {
   return (
     <div>
       <form className="mb-4" onSubmit={handleSearch}>
-        <div className="relative">
+        <div className={`relative ${isDarkMode ? 'dark' : ''}`}>
           <input
             type="text"
             placeholder="Search Blogs"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="p-2 border border-gray-300 rounded-md w-full"
+            className={`p-2 border rounded-md w-full ${
+              isDarkMode ? 'dark:bg-gray-800 dark:text-white' : 'border-gray-300'
+            }`}
           />
           <div className="absolute right-0 top-0">
             <button
               type="submit"
-              className="bg-indigo-500 text-white p-2 rounded-md absolute right-0 top-0 m-1 flex items-center justify-center"
+              className={`p-2 rounded-md absolute right-0 top-0 m-1 flex items-center justify-center ${
+                isDarkMode ? 'bg-gray-800 text-white' : 'bg-indigo-500 text-white'
+              }`}
             >
               <svg
                 className="w-4 h-4 text-white"

@@ -1,9 +1,11 @@
 // src/components/Navbar.js
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useTheme } from "../ThemeContext.jsx";
 
 const Navbar = () => {
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isNavOpen, setIsNavOpen] = React.useState(false);
+  const { isDarkMode, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const toggleNav = () => {
@@ -11,21 +13,28 @@ const Navbar = () => {
   };
 
   const handleSearchClick = () => {
-    // Navigate to the search page when the search button is clicked
     navigate("/search");
   };
 
   return (
-    <div className="flex">
+    <div className={`flex ${isDarkMode ? "dark" : ""}`}>
       <nav
         id="sideNav"
-        className={`z-50 flex flex-col h-full text-white w-64 fixed top-0 left-0 transform bg-gray-50 text-gray-800 flex-shrink-0 py-6 pr-4 pl-2 transition-transform ${
+        className={`z-50 flex flex-col h-full text-white w-64 fixed top-0 left-0 transform bg-${
+          isDarkMode ? "gray-800" : "white"
+        } text-${
+          isDarkMode ? "white" : "gray-800"
+        } flex-shrink-0 py-6 pr-4 pl-2 transition-transform ${
           isNavOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <Link to="/" className="ml-2">
           <img
-            src="https://stablo-template.vercel.app/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fe8fa4f57a95067e838d7aa5a4f80042137d9f5b6-132x52.svg%3Fw%3D132%26auto%3Dformat&w=1080&q=75"
+            src={
+              isDarkMode
+                ? "https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fb32b39e1bbe3fff055cc7682026556a2a960c8a3-132x52.svg%3Fw%3D132%26auto%3Dformat&w=1080&q=75"
+                : "https://stablo-template.vercel.app/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fe8fa4f57a95067e838d7aa5a4f80042137d9f5b6-132x52.svg%3Fw%3D132%26auto%3Dformat&w=1080&q=75"
+            }
             alt="Logo"
             className="h-8"
           />
@@ -35,20 +44,12 @@ const Navbar = () => {
           <li className="nav-item">
             <Link
               to="/"
-              className="py-2 mt-2 flex items-center gap-2 text-black bg-slate-200 px-2 font-semibold rounded-md"
+              className={`py-2 mt-2 flex items-center gap-2 ${
+                isDarkMode
+                  ? "text-white bg-gray-800"
+                  : "text-black bg-slate-200"
+              } px-2 font-semibold rounded-md`}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="1em"
-                height="1em"
-                viewBox="0 0 20 20"
-                fill="none"
-              >
-                <path
-                  d="M10.7071 2.29289C10.3166 1.90237 9.68342 1.90237 9.29289 2.29289L2.29289 9.29289C1.90237 9.68342 1.90237 10.3166 2.29289 10.7071C2.68342 11.0976 3.31658 11.0976 3.70711 10.7071L4 10.4142V17C4 17.5523 4.44772 18 5 18H7C7.55228 18 8 17.5523 8 17V15C8 14.4477 8.44772 14 9 14H11C11.5523 14 12 14.4477 12 15V17C12 17.5523 12.4477 18 13 18H15C15.5523 18 16 17.5523 16 17V10.4142L16.2929 10.7071C16.6834 11.0976 17.3166 11.0976 17.7071 10.7071C18.0976 10.3166 18.0976 9.68342 17.7071 9.29289L10.7071 2.29289Z"
-                  fill="currentColor"
-                ></path>
-              </svg>
               Home
             </Link>
           </li>
@@ -56,7 +57,11 @@ const Navbar = () => {
           <li>
             <Link
               to="/about"
-              className="py-2 mt-2 flex items-center gap-2 text-black hover:bg-slate-200 hover:text-slate-900 px-2 font-semibold rounded-md"
+              className={`py-2 mt-2 flex items-center gap-2 ${
+                isDarkMode
+                  ? "text-white hover:bg-slate-600"
+                  : "text-black hover:bg-slate-200"
+              } px-2 font-semibold rounded-md`}
             >
               About
             </Link>
@@ -65,7 +70,11 @@ const Navbar = () => {
           <li>
             <Link
               to="/contact"
-              className="py-2 mt-2 flex items-center gap-2 text-black hover:bg-slate-200 hover:text-slate-900 px-2 font-semibold rounded-md"
+              className={`py-2 mt-2 flex items-center gap-2 ${
+                isDarkMode
+                  ? "text-white hover:bg-slate-600"
+                  : "text-black hover:bg-slate-200"
+              } px-2 font-semibold rounded-md`}
             >
               Contact
             </Link>
@@ -74,7 +83,12 @@ const Navbar = () => {
           <li>
             <Link
               to="/Blog"
-              className="py-2 mt-2 flex items-center gap-2 text-black hover:bg-slate-200 hover:text-slate-900 px-2 font-semibold rounded-md" >
+              className={`py-2 mt-2 flex items-center gap-2 ${
+                isDarkMode
+                  ? "text-white hover:bg-slate-600"
+                  : "text-black hover:bg-slate-200"
+              } px-2 font-semibold rounded-md`}
+            >
               Blog
             </Link>
           </li>
@@ -82,25 +96,37 @@ const Navbar = () => {
       </nav>
 
       <div className="flex-1 flex flex-col overflow-hidden">
-        <header className="bg-white border-b border-gray-300 h-20 p-4 flex items-center justify-between">
+        <header
+          className={`bg-${
+            isDarkMode ? "gray-800" : "white"
+          } border-b border-gray-300 h-20 p-4 flex items-center justify-between`}
+        >
           <div className="flex items-center justify-center">
             <Link to="/" className="ml-2">
               <img
-                src="https://stablo-template.vercel.app/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fe8fa4f57a95067e838d7aa5a4f80042137d9f5b6-132x52.svg%3Fw%3D132%26auto%3Dformat&w=1080&q=75"
+                src={
+                  isDarkMode
+                    ? "https://stablo-pro.web3templates.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fb32b39e1bbe3fff055cc7682026556a2a960c8a3-132x52.svg%3Fw%3D132%26auto%3Dformat&w=1080&q=75"
+                    : "https://stablo-template.vercel.app/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fe8fa4f57a95067e838d7aa5a4f80042137d9f5b6-132x52.svg%3Fw%3D132%26auto%3Dformat&w=1080&q=75"
+                }
                 alt="Logo"
                 className="h-8"
               />
             </Link>
           </div>
-          <div className="gap-3">
+          <div
+            className={`flex items-center gap-1 ${isDarkMode ? "dark" : ""}`}
+          >
             <button
-              className="mr-[3px] p-2"
+              className={`mr-[3px] p-2 ${
+                isDarkMode ? "dark:text-white" : "text-gray-800"
+              }`}
               id="search"
               onClick={handleSearchClick}
             >
               <svg
-                className="w-5 h-5 text-gray-800"
-                ariahidden="true"
+                className="w-5 h-5"
+                aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 20 20"
@@ -117,13 +143,13 @@ const Navbar = () => {
             <button
               id="menuToggle"
               className={`menu hamburger relative inline-flex items-center justify-center rounded-md p-2 ${
-                isNavOpen ? "active" : ""
-              }`}
+                isDarkMode ? "dark:text-white" : "text-gray-800"
+              } ${isNavOpen ? "active" : ""}`}
               onClick={toggleNav}
             >
               <div>
                 <svg
-                  className="w-5 h-5 fill-current text-gray-900 hover:text-indigo-500"
+                  className="w-5 h-5 fill-current"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                 >
@@ -132,6 +158,46 @@ const Navbar = () => {
                   <rect y="18" width="24" height="2" rx="1" />
                 </svg>
               </div>
+            </button>
+            <button
+              className={`ml-2 p-2 ${
+                isDarkMode ? "dark:text-white" : "text-gray-800"
+              }`}
+              onClick={toggleTheme}
+            >
+              {isDarkMode ? (
+                <svg
+                  className="w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M10 3V1m0 18v-2M5.05 5.05 3.636 3.636m12.728 12.728L14.95 14.95M3 10H1m18 0h-2M5.05 14.95l-1.414 1.414M16.364 3.636 14.95 5.05M14 10a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 18 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M8.509 5.75c0-1.493.394-2.96 1.144-4.25h-.081a8.5 8.5 0 1 0 7.356 12.746A8.5 8.5 0 0 1 8.509 5.75Z"
+                  />
+                </svg>
+              )}
             </button>
           </div>
         </header>

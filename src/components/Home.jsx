@@ -1,14 +1,15 @@
-// src/components/Home.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BlogList from "./BlogList.jsx";
-import { getBlogs, getRecentBlogs, getOlderBlogs } from "../blogData.js";
+import { getBlogs, getAuthors } from "../blogData.js";
+import { useTheme } from '../ThemeContext.jsx';
 
 const PAGE_SIZE = 15;
 
 const Home = ({ searchTerm }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
+  const { isDarkMode } = useTheme();
 
   const handleBlogClick = (blog) => {
     navigate(`/blog/${blog.id}`);
@@ -22,10 +23,44 @@ const Home = ({ searchTerm }) => {
           {blogs.map((blog) => (
             <div
               key={blog.id}
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 cursor-pointer"
+              className={`bg-${isDarkMode ? 'gray-800' : 'white'} p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 cursor-pointer mb-4`}
               onClick={() => handleBlogClick(blog)}
             >
-              {/* Blog content here */}
+              <h2 className={`text-xl font-semibold text-${isDarkMode ? 'white' : 'gray-900'} mb-2`}>
+                {blog.title}
+              </h2>
+              {/* Displaying categories */}
+              <div className="flex items-center mb-2">
+                {blog.categories.map((category, index) => (
+                  <span
+                    key={index}
+                    className={`text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded-full mr-2`}
+                  >
+                    {category}
+                  </span>
+                ))}
+              </div>
+              {/* Displaying author information */}
+              <div className="flex items-center">
+                <img
+                  src={
+                    getAuthors().find((author) => author.id === blog.authorId)
+                      ?.image
+                  }
+                  alt={
+                    getAuthors().find((author) => author.id === blog.authorId)
+                      ?.Name
+                  }
+                  className="w-8 h-8 rounded-full mr-2"
+                />
+                <p className={`text-sm text-gray-500`}>
+                  {
+                    getAuthors().find((author) => author.id === blog.authorId)
+                      ?.Name
+                  }{" "}
+                  | {blog.createdDate}
+                </p>
+              </div>
             </div>
           ))}
         </div>
@@ -51,8 +86,10 @@ const Home = ({ searchTerm }) => {
   };
 
   return (
-    <div>
-      <div className="mb-4">{/* Search input field */}</div>
+    <div className={`bg-${isDarkMode ? 'gray-900' : 'gray-100'} text-${isDarkMode ? 'white' : 'gray-800'}`}>
+      <div className="mb-4">
+        {/* Search input field (you can add your search input component here) */}
+      </div>
       {renderBlogList(paginatedBlogs)}
       {totalPages > 1 && (
         <div className="flex justify-center mt-4">

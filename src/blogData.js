@@ -92,7 +92,7 @@ const blogs = [
     image:
       "https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/bltbb4435364eedb077/65784e43a11649040ae45dca/GOAL_-_Blank_WEB_-_Facebook_-_2023-12-12T121230.076.png?auto=webp&format=pjpg&width=2048&quality=60",
     categories: ["Football", " Messi"],
-    createdDate: "2023-12-12", // Add a created date
+    createdDate: "December-13-2023", // Add a created date
     authorId: 1,
   },
   {
@@ -145,24 +145,38 @@ Argentina’s number one goalkeeper commented on his team mates:
   },
   {
     id: 6,
-    title: "The Best Way to Start Your Business",
+    title: "How to Create Responsive Fiverr Website in HTML and CSS",
     content: `
-      Reinvention often comes in spurts, after a long period of silence.`,
+      If you’re a beginner web developer, creating a Fiverr website using HTML and CSS is a valuable opportunity to gain real-world experience. By recreating the design of a well-established platform like Fiverr, you’ll not only develop practical skills in HTML and CSS but also demonstrate your ability to replicate existing designs.
+<br><br>
+In this easy-to-follow blog post, I’ll show you how to create a responsive Fiverr website using only HTML, CSS, and JavaScript. You’ll learn how to create an interactive website’s homepage with a navigation bar, position elements on the page, and style them to match the Fiverr look and feel.
+<br><br>
+Throughout the post, we’ll explore a variety of HTML tags and CSS properties to efficiently create our Fiverr-inspired homepage. To create an attractive layout that attracts viewers and ensures a simple interface, we’ll use tags like nav, sections, divs, inputs, links, and other commonly used tags.
+<br><br>
+<h1 class="text-xl font-bold">Steps To Create Fiverr Website in HTML and CSS:</h1>
+<br><br>
+To create a responsive Fiverr-inspired Homepage using HTML and CSS, follow these step-by-step instructions:
+<br><br>
+<ul class="list-disc">
+<li>First, create a folder with any name you like. Then, put the necessary files inside it.</li>
+<li>Create a file called <code>index.html</code> to serve as the main file.</li>
+</ul>
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt; &lt;!-- Coding By CodingNepal - www.codingnepalweb.com --&gt; &lt;html lang=&quot;en&quot;&gt; &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; &lt;title&gt;Fiverr Homepage Clone | CodingNepal&lt;/title&gt; &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt; &lt;!-- Google Icons Link --&gt; &lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&quot;&gt; &lt;/head&gt; &lt;body&gt; &lt;header&gt; &lt;nav class=&quot;navbar&quot;&gt; &lt;a href=&quot;#&quot; class=&quot;logo&quot;&gt; &lt;img src=&quot;images/logo.svg&quot; alt=&quot;Fiverr Logo&quot;&gt; &lt;/a&gt; &lt;ul class=&quot;menu-links&quot;&gt; &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Fiverr Business&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Explore&lt;/a&gt;&lt;/li&gt; &lt;li class=&quot;language-item&quot;&gt; &lt;a href=&quot;#&quot;&gt; &lt;span class=&quot;material-symbols-outlined&quot;&gt;language&lt;/span&gt; English &lt;/a&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Become a Seller&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Sign In&lt;/a&gt;&lt;/li&gt; &lt;li class=&quot;join-btn&quot;&gt;&lt;a href=&quot;#&quot;&gt;Join Us&lt;/a&gt;&lt;/li&gt; &lt;span id=&quot;close-menu-btn&quot; class=&quot;material-symbols-outlined&quot;&gt;close&lt;/span&gt; &lt;/ul&gt; &lt;span id=&quot;hamburger-btn&quot; class=&quot;material-symbols-outlined&quot;&gt;menu&lt;/span&gt; &lt;/nav&gt; &lt;/header&gt; &lt;section class=&quot;hero-section&quot;&gt; &lt;div class=&quot;content&quot;&gt; &lt;h1&gt;Find the right freelance service, right away&lt;/h1&gt; &lt;form action=&quot;#&quot; class=&quot;search-form&quot;&gt; &lt;input type=&quot;text&quot; placeholder=&quot;Search for any service...&quot; required&gt; &lt;button class=&quot;material-symbols-outlined&quot; type=&quot;sumbit&quot;&gt;search&lt;/button&gt; &lt;/form&gt; &lt;div class=&quot;popular-tags&quot;&gt; Popular: &lt;ul class=&quot;tags&quot;&gt; &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Webite Design&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Logo Design&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#&quot;&gt;WordPress&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#&quot;&gt;AI Design&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;/div&gt; &lt;/section&gt; &lt;script&gt; &lt;/script&gt; &lt;/body&gt; &lt;/html&gt;
+</code></pre>
+`,
     image:
-      "https://stablo-template.vercel.app/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fb7d2fa6d0b250bd1e0c601645319db4cde42a01e-3958x5937.jpg%3Fw%3D2000%26auto%3Dformat&w=384&q=75",
-    categories: ["Travel"],
-    createdDate: "2023-12-12", // Add a created date
-    authorId: 2,
+      "https://www.codingnepalweb.com/wp-content/uploads/2023/07/How-to-Create-Responsive-Fiverr-Website-in-HTML-CSS-and-JavaScript.jpg",
+    categories: ["Coding"],
+    createdDate: "December-13-2023", // Add a created date
+    authorId: 1,
   },
 ];
 
-export const getBlogs = () => blogs;
+export const getBlogs = () => blogs.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
 export const getBlogById = (id) => blogs.find((blog) => blog.id === Number(id));
-
 export const getRecentBlogs = (limit) => blogs.slice(0, limit);
-
 export const getOlderBlogs = (limit) => blogs.slice(-limit);
-
 export const getAuthors = () => authors;
 
 export default blogs;
