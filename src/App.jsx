@@ -8,6 +8,7 @@ import Contact from './components/Contact.jsx';
 import Home from "./components/Home.jsx";
 import BlogDetails from "./components/BlogDetails.jsx";
 import Search from "./components/Search.jsx";
+import CategoryPage from "./components/CategoryPage.jsx"; // Import the CategoryPage component
 import { getBlogs } from "./blogData.js";
 import "./App.css";
 import "./index.css";
@@ -35,6 +36,7 @@ const App = () => {
             <Route path="/search" element={<Search onSearch={handleSearch} />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/category/:category" element={<CategoryPage />} /> {/* New route for category pages */}
           </Routes>
         </div>
         <Footer />
