@@ -1,69 +1,95 @@
 // src/components/Search.jsx
-import React, { useState } from "react";
-import BlogList from "./BlogList.jsx";
-import { getBlogs } from "../blogData.js";
+import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { getBlogs, getAuthors } from "../blogData.js";
 
-const Search = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchError, setSearchError] = useState(false);
+const Search = ({ searchTerm: initialSearchTerm = "" }) => {
+  const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
   const [filteredBlogs, setFilteredBlogs] = useState([]);
+  const navigate = useNavigate();
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-
-    const blogs = getBlogs();
-    const filteredBlogs = blogs.filter((blog) =>
-      blog.title.toLowerCase().includes(searchTerm.toLowerCase())
+  useEffect(() => {
+    const filteredBlogs = getBlogs().filter((blog) =>
+      blog.title.toLowerCase().includes(searchTerm.toLowerCase()),
     );
-
-    setSearchError(filteredBlogs.length === 0);
     setFilteredBlogs(filteredBlogs);
+  }, [searchTerm]);
 
-    // Add logic to handle search, you can update the URL or filter blogs directly
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSearch = () => {
+    navigate(`/search?term=${encodeURIComponent(searchTerm)}`);
   };
 
   return (
     <div>
-      <form className="mb-4" onSubmit={handleSearch}>
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Search Blogs"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="p-2 border border-gray-300 rounded-md w-full"
-          />
-          <div className="absolute right-0 top-0">
-            <button
-              type="submit"
-              className="bg-indigo-500 text-white p-2 rounded-md absolute right-0 top-0 m-1 flex items-center justify-center"
-            >
-              <svg
-                className="w-4 h-4 text-white"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+      <h2 className="text-2xl font-semibold mb-4 text-center font-inter">
+        Search
+      </h2>
+      <div className="flex items-center justify-center">
+        <input
+          type="text"
+          className="border p-2 mr-2"
+          placeholder="Enter your search term"
+          value={searchTerm}
+          onChange={handleInputChange}
+        />
+        <button
+          className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded"
+          onClick={handleSearch}
+        >
+          Search
+        </button>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+        {filteredBlogs.map((blog) => (
+          <div key={blog.id} className="bg-white p-4 rounded-lg shadow-md">
+            <Link to={`/blog/${blog.id}`}>
+              <img
+                src={blog.image}
+                alt={blog.title}
+                className="mb-2 rounded-md h-32 w-full object-cover"
+              />
+              <p className="text-lg font-semibold text-gray-900 hover:underline line-clamp-3 text-ellipsis">
+                {blog.title}
+              </p>
+              <div className="flex items-center mb-2">
+                {blog.categories.map((category, index) => (
+                  <Link
+                    key={index}
+                    to={`/category/${category}`} // Link to the category page
+                    className="text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded-full mr-2"
+                  >
+                    {category}
+                  </Link>
+                ))}
+              </div>
+              <div className="flex items-center mb-4">
+                <img
+                  src={
+                    getAuthors().find((author) => author.id === blog.authorId)
+                      ?.image
+                  }
+                  alt={
+                    getAuthors().find((author) => author.id === blog.authorId)
+                      ?.Name
+                  }
+                  className="w-8 h-8 rounded-full mr-2"
                 />
-              </svg>
-            </button>
+                <p className="text-sm text-gray-500">
+                  {
+                    getAuthors().find((author) => author.id === blog.authorId)
+                      ?.Name
+                  }{" "}
+                  | {blog.createdDate}
+                </p>
+              </div>
+            </Link>
           </div>
-        </div>
-      </form>
-      {searchError && (
-        <p className="text-red-500">
-          No blogs found matching the search criteria. Please try a different
-          search term.
-        </p>
-      )}
-      <BlogList filteredBlogs={searchError ? [] : filteredBlogs} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -8,7 +8,8 @@ import Contact from './components/Contact.jsx';
 import Home from "./components/Home.jsx";
 import BlogDetails from "./components/BlogDetails.jsx";
 import Search from "./components/Search.jsx";
-import CategoryPage from "./components/CategoryPage.jsx"; // Import the CategoryPage component
+import CategoryPage from "./components/CategoryPage.jsx";
+import TagPage from './components/TagPage.jsx'; 
 import { getBlogs } from "./blogData.js";
 import "./App.css";
 import "./index.css";
@@ -29,14 +30,15 @@ const App = () => {
     <Router>
       <div>
         <Navbar onSearch={handleSearch} />
-        <div className="container mx-auto p-4">
+        <div className="w-full container mx-auto p-4">
           <Routes>
             <Route path="/" element={<Home searchTerm={searchTerm} />} />
             <Route path="/blog/:id" element={<BlogDetails />} />
-            <Route path="/search" element={<Search onSearch={handleSearch} />} />
+            <Route path="/category/:category" element={<CategoryPage />} />
+            <Route path="/tag/:tag" element={<TagPage />} />
+            <Route path="/search" element={<Search searchTerm={searchTerm} />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/category/:category" element={<CategoryPage />} /> {/* New route for category pages */}
           </Routes>
         </div>
         <Footer />

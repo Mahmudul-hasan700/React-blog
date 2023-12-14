@@ -1,11 +1,21 @@
 // src/components/CategoryPage.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getBlogs, getAuthors } from "../blogData.js";
 
 const CategoryPage = () => {
   const { category } = useParams();
-  const blogsInCategory = getBlogs().filter(blog => blog.categories.includes(category));
+  const [blogsInCategory, setBlogsInCategory] = useState([]);
+
+  useEffect(() => {
+    const fetchBlogs = () => {
+      // Fetch blogs based on the category
+      const blogs = getBlogs().filter(blog => blog.categories.includes(category));
+      setBlogsInCategory(blogs);
+    };
+
+    fetchBlogs();
+  }, [category]);
 
   return (
     <div>

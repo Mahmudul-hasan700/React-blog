@@ -506,7 +506,8 @@ header .navbar {
     image:
       "https://www.codingnepalweb.com/wp-content/uploads/2023/07/How-to-Create-Responsive-Fiverr-Website-in-HTML-CSS-and-JavaScript.jpg",
     categories: ["Coding"],
-    createdDate: "2023-12-13", // Add a created date
+    createdDate: "2023-12-13",
+    tags: ['Html-css-js', 'Web Development', 'React'],
     authorId: 1,
   },
 ];
