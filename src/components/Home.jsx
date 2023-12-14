@@ -1,10 +1,15 @@
 // src/components/Home.jsx
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { getBlogs, getAuthors } from "../blogData.js";
+import { getAuthors } from "../Authors.js";
+import { getBlogs } from "../blogData.js";
 
 const Home = ({ searchTerm }) => {
-  const pageSize = 10; // Number of blogs per page
+  const myStyle = {
+    fontFamily: 'Inter, sans-serif',
+  };
+  
+  const pageSize = 10; 
   const [currentPage, setCurrentPage] = useState(1);
 
   // Get filtered blogs based on the search term
@@ -39,10 +44,29 @@ const Home = ({ searchTerm }) => {
     }
   };
 
+  // Function to count the number of blogs per category
+  const countBlogsPerCategory = () => {
+    const blogCountPerCategory = {};
+
+    getBlogs().forEach((blog) => {
+      blog.categories.forEach((category) => {
+        if (blogCountPerCategory[category]) {
+          blogCountPerCategory[category]++;
+        } else {
+          blogCountPerCategory[category] = 1;
+        }
+      });
+    });
+
+    return blogCountPerCategory;
+  };
+
+  const blogCountPerCategory = countBlogsPerCategory();
+
   return (
     <div className="w-full">
-      <h2 className="text-2xl font-semibold mb-4 text-center font-inter">
-        Latest Blogs
+      <h2 className="text-2xl font-semibold mb-4 text-center" style={myStyle}>
+        LATEST ARTICLES
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {displayedBlogs.map((blog) => (
@@ -53,7 +77,7 @@ const Home = ({ searchTerm }) => {
                 alt={blog.title}
                 className="mb-2 rounded-md h-32 w-full object-cover"
               />
-              <p className="text-lg font-semibold text-gray-900 hover:underline line-clamp-3 text-ellipsis">
+              <p className="text-lg font-semibold text-gray-900 hover:underline line-clamp-3 text-ellipsis" style={myStyle}>
                 {blog.title}
               </p>
               <div className="flex items-center mb-2">
@@ -79,7 +103,7 @@ const Home = ({ searchTerm }) => {
                   }
                   className="w-8 h-8 rounded-full mr-2"
                 />
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500" style={myStyle}>
                   {
                     getAuthors().find((author) => author.id === blog.authorId)
                       ?.Name
@@ -99,7 +123,7 @@ const Home = ({ searchTerm }) => {
           className={`flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 ${
             currentPage === 1
               ? "bg-gray-200 text-gray-700 cursor-not-allowed"
-              : "bg-indigo-500 text-white"
+              : "bg-[#4db1eb] text-white border-none"
           }`}
           disabled={currentPage === 1}
         >
@@ -113,7 +137,7 @@ const Home = ({ searchTerm }) => {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
+              strokelinecap="round"
               strokelinejoin="round"
               strokewidth="2"
               d="M13 5H1m0 0 4 4M1 5l4-4"
@@ -127,7 +151,7 @@ const Home = ({ searchTerm }) => {
             onClick={() => handlePageChange(index + 1)}
             className={`flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 ${
               currentPage === index + 1
-                ? "bg-indigo-500 text-white"
+                ? "bg-[#4db1eb] text-white border-none"
                 : "bg-gray-200 text-gray-700"
             }`}
           >
@@ -139,7 +163,7 @@ const Home = ({ searchTerm }) => {
           className={`flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 ${
             currentPage === totalPages
               ? "bg-gray-200 text-gray-700 cursor-not-allowed"
-              : "bg-indigo-500 text-white"
+              : "bg-[#4db1eb] text-white border-none"
           }`}
           disabled={currentPage === totalPages}
         >
@@ -160,6 +184,24 @@ const Home = ({ searchTerm }) => {
             />
           </svg>
         </button>
+      </div>
+
+      {/* Category List */}
+      <div className="mt-8 w-full">
+        <h2 className="text-2xl font-semibold mb-4 text-center font-inter">
+          CATEGORIES
+        </h2>
+        <div className="w-full md:grid md:grid-cols-2 md:gap-2 flex flex-wrap justify-center gap-4">
+          {Object.keys(blogCountPerCategory).map((category) => (
+            <Link
+              key={category}
+              to={`/category/${category}`}
+              className="text-indigo-500 hover:underline text-[17px]"
+            >
+              {category} ({blogCountPerCategory[category]})
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
