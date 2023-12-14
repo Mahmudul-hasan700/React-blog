@@ -82,19 +82,23 @@ const BlogDetails = () => {
         </Link>
       </div>
 
-      <div className="mt-8 font-inter">
+  <div className="mt-8 font-inter border-t border-gray-100 mb-[20px]">
         {/* Displaying tags */}
-        <div className="flex items-center mb-2">
+        <div className="py-8 border-b border-gray-100 flex items-center flex-wrap gap-2">
+          <span className="py-1 px-2 bg-black text-white rounded">Tags:</span>
           {blog.tags && blog.tags.map((tag, index) => (
             <Link
               key={index}
               to={`/tag/${tag}`} // Link to the tag page
-              className="text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded-full mr-2"
+              className="py-1 px-2 text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded mr-2"
             >
               {tag}
             </Link>
           ))}
         </div>
+    <div className="py-8 border-b border-gray-100 flex items-center flex-wrap gap-2">
+
+    </div>
         <h2 className="text-2xl font-semibold mb-4 text-center font-inter">
           You May Also Like
         </h2>

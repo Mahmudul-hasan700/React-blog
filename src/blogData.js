@@ -98,49 +98,218 @@ const blogs = [
   {
     id: 5,
     title:
-      "â€˜Emiliano MartÃ­nez speaks on this Argentina team in history, World Cup, psychologist",
+      "Create A Glassmorphism Login Form in HTML and CSS",
     content: `
-      Emiliano MartÃ­nez spoke about this Argentina teamâ€™s place in history, winning the World Cup and using a psychologist.
+      You may have seen trendy Glassmorphism effects on login forms, cards, and various components on different websites. As a beginner web developer, have you ever thought about creating your own Login form with Glassmorphism effects?
 <br><br>
-MartÃ­nez has won everything there is to win with the Argentina national team. He won the Copa America while also being named as the best goalkeeper, he won the Finalissima and won the biggest prize there is to win which is the World Cup.
+If you’re unfamiliar, glassmorphism is a user interface design trend that creates the illusion of translucent and blurred glass surfaces. This effect gives the elements a semi-transparent look, making the background and foreground blend smoothly.
 <br><br>
-The Argentine was also named the best goalkeeper at the World Cup to continue to cement his legacy in Argentine football. MartÃ­nez spoke to ESPN about the current Argentina teamâ€™s place in history. Here is what he had to say:
+In this beginner-friendly blog post, I’ll guide you through the steps of creating a Glassmorphism Login Form in HTML and CSS only. Not only will you learn to create forms with a stunning glass-like effect, but you’ll also learn how to add an engaging floating-label animation.
 <br><br>
-â€œI want to win one more Copa America and say: â€˜this team is going to be the best in history.
+<h1 class="text-xl font-bold">Steps To Create Glassmorphism Login Form HTML & CSS:<h1>
 <br>
-What I enjoyed the most and I still enjoy it every day and when I die I will enjoy it too, is that we have one more star in the team.
+To create a Login Form with a glassmorphism effect and floating input label animation using HTML and CSS, follow these simple instructions step-by-step:
 <br><br>
-â€œIt is not only â€˜ah, I won the Cupâ€™ but also â€˜I generated this for the next generationâ€™. They are going to say Argentina has 3 stars and not this generation won the World Cup.
+<ul class="list-disc list-inside">
+<li class="mt-2">Create a folder. You can name this folder whatever you want, and inside this folder, create the mentioned files.</li>
+<li class="mt-2">Create an <code>index.html</code> file. The file name must be index and its extension .html</li>
+<li class="mt-2">Create a <code>style.css</code> file. The file name must be style and its extension .css</li>
+</ul>
 <br><br>
-â€œWe generated a standard for the next generation to win the fourth, because in the end, football in Argentina is union, it is passionâ€.
+To start, add the following HTML codes to your index.html file. These codes include essential HTML elements such as forms, input, links, buttons, and others. For basic form validation, I’ve also included the “required” attribute for the input fields.
 <br><br>
-He also commented on the World Cup and speaking to his psychologist after losing to Saudi Arabia in the first match:
+<div class="container w-full prose h-96 overflow-y-auto rounded-md">
+<pre class="code-block">
+<code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;!-- Coding By CodingNepal - www.codingnepalweb.com --&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Glassmorphism Login Form | CodingNepal&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&quot;wrapper&quot;&gt;
+    &lt;form action=&quot;#&quot;&gt;
+      &lt;h2&gt;Login&lt;/h2&gt;
+      &lt;div class=&quot;input-field&quot;&gt;
+        &lt;input type=&quot;text&quot; required&gt;
+        &lt;label&gt;Enter your email&lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;input-field&quot;&gt;
+        &lt;input type=&quot;password&quot; required&gt;
+        &lt;label&gt;Enter your password&lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;forget&quot;&gt;
+        &lt;label for=&quot;remember&quot;&gt;
+          &lt;input type=&quot;checkbox&quot; id=&quot;remember&quot;&gt;
+          &lt;p&gt;Remember me&lt;/p&gt;
+        &lt;/label&gt;
+        &lt;a href=&quot;#&quot;&gt;Forgot password?&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;button type=&quot;submit&quot;&gt;Log In&lt;/button&gt;
+      &lt;div class=&quot;register&quot;&gt;
+        &lt;p&gt;Don't have an account? &lt;a href=&quot;#&quot;&gt;Register&lt;/a&gt;&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</div>
 <br><br>
-â€œI used my psychologist a lot those three days, after Saudi Arabia. I told him: â€˜Look, I think that if I lose to Mexico, Iâ€™m going home, itâ€™s killing meâ€™. I would go to sleep and sometimes I would wake up and say: â€˜If I lose to Mexico, Iâ€™m going homeâ€™.
+Next, add the following CSS codes to your style.css file to style our login form, along with the glassmorphism effect and floating label animation. These lines of code include various CSS properties like blur, background, background image, etc. to achieve the desired Glassmorphism effect.
 <br><br>
-â€œI was in the room aloneâ€¦ I set up my room for a month. I put pictures of my kids, their favorite dolls, everything. I took the PlayStation, I set it up like at home and I said â€˜I canâ€™t go to Argentina in 10 days, it must be devastatingâ€™.
+<div class="container w-full prose h-96 overflow-y-auto rounded-md">
+<pre class="code-block">
+<code class="language-html">
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 0 10px;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("https://www.codingnepalweb.com/demos/create-glassmorphism-login-form-html-css/hero-bg.jpg"), #000;
+  background-position: center;
+  background-size: cover;
+}
+
+.wrapper {
+  width: 400px;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.input-field {
+  position: relative;
+  border-bottom: 2px solid #ccc;
+  margin: 15px 0;
+}
+
+.input-field label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.15s ease;
+}
+
+.input-field input {
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #fff;
+}
+
+.input-field input:focus~label,
+.input-field input:valid~label {
+  font-size: 0.8rem;
+  top: 10px;
+  transform: translateY(-120%);
+}
+
+.forget {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 25px 0 35px 0;
+  color: #fff;
+}
+
+#remember {
+  accent-color: #fff;
+}
+
+.forget label {
+  display: flex;
+  align-items: center;
+}
+
+.forget label p {
+  margin-left: 8px;
+}
+
+.wrapper a {
+  color: #efefef;
+  text-decoration: none;
+}
+
+.wrapper a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  color: #fff;
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.register {
+  text-align: center;
+  margin-top: 30px;
+  color: #fff;
+}
+</pre></code></div>
 <br><br>
-â€œI have the World Cup in my studio, where I play and have my meetings.
-<br><br>
-â€œIt is upstairs, and I have it with lights. Sometimes I go in at night and itâ€™s elevated and with light blue lights, I look at it and smile.â€
-<br><br>
-Dibu also spoke about his performance in the World Cup final:
-<br><br>
-â€œAgainst France I saved badly, they came at me three times and they were three goals. The one against MbappÃ©, I was in a bad position, I touched it and it beat me.
-<br><br>
-â€œI didnâ€™t feel I saved well in that final. They see the final save or the penalties, but for me I didnâ€™t save well.â€
-<br><br>
-Argentinaâ€™s number one goalkeeper commented on his team mates:
-<br><br>
-â€œI know the virtue of Cuti (Cristian Romero) and Ota (NicolÃ¡s Otamendi). Either the ball passes or the player passes, not both. That gives me life.
-<br><br>
-â€œIn the final against France, Cuti went with both feet to MbappÃ©, I grabbed him by the shirt at halftime and told him: â€˜if you get kicked out, Iâ€™ll beat you up after the gameâ€™.
-<br>
-â€œI have to tell Cuti to please stop hitting. He plays like that. But they are impressive.â€.`,
+<br><br>`,
     image:
-      "https://mundoalbiceleste.com/wp-content/uploads/2023/12/emiliano-martinez-world-cup-trophy-comments.jpg",
-    categories: ["Football", "Emi martinez"],
-    createdDate: "2023-12-12",
+      "https://www.codingnepalweb.com/wp-content/uploads/2023/07/Create-A-Glassmorphism-Login-Form-in-HTML-and-CSS-1068x601.jpg",
+    categories: ["HTML and CSS"],
+    tags: ['coding', 'CSS', 'CSS Login Form','Frontend', 'glassmorphism', 'Login Form', 'Html', 'Html login Form'],
+    createdDate: "2023-12-14",    
     authorId: 1,
   },
   {
@@ -167,7 +336,8 @@ To create a responsive Fiverr-inspired Homepage using HTML and CSS, follow these
 <p class="text-gray-700">To start, add the following HTML codes to your <code>index.html</code> file. These codes include a navigation bar (nav), sections, input fields, links, and various other tags necessary for your webpage. Additionally, this code includes a few lines of JavaScript code to toggle the mobile menu on small screens.</p>
 <br><br>
 <div class="container w-full prose h-96 overflow-y-auto rounded-md">
-<pre><code class="language-html">
+<pre class="code-block">
+<code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;!-- Coding By CodingNepal - www.codingnepalweb.com --&gt;
 &lt;html lang=&quot;en&quot;&gt;
