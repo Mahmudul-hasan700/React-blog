@@ -1,21 +1,31 @@
-// src/components/CategoryPage.jsx
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { getBlogs, getAuthors } from "../blogData.js";
 
 const CategoryPage = () => {
   const { category } = useParams();
   const [blogsInCategory, setBlogsInCategory] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
+    // Fetch blogs based on the category
     const fetchBlogs = () => {
-      // Fetch blogs based on the category
-      const blogs = getBlogs().filter(blog => blog.categories.includes(category));
+      const blogs = getBlogs().filter((blog) =>
+        blog.categories.includes(category)
+      );
       setBlogsInCategory(blogs);
     };
 
-    fetchBlogs();
-  }, [category]);
+    // Handle direct navigation with a category
+    const categoryFromQueryParams = new URLSearchParams(location.search).get(
+      "category"
+    );
+    if (categoryFromQueryParams && categoryFromQueryParams !== category) {
+      fetchBlogs();
+    } else {
+      fetchBlogs();
+    }
+  }, [category, location.search]);
 
   return (
     <div>
@@ -23,7 +33,7 @@ const CategoryPage = () => {
         Blogs in Category: {category}
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {blogsInCategory.map(blog => (
+        {blogsInCategory.map((blog) => (
           <div key={blog.id} className="bg-white p-4 rounded-lg shadow-md">
             <Link to={`/blog/${blog.id}`}>
               <img
@@ -49,12 +59,22 @@ const CategoryPage = () => {
               {/* Displaying author information for related blog */}
               <div className="flex items-center mb-4">
                 <img
-                  src={getAuthors().find((author) => author.id === blog.authorId)?.image}
-                  alt={getAuthors().find((author) => author.id === blog.authorId)?.Name}
+                  src={
+                    getAuthors().find((author) => author.id === blog.authorId)
+                      ?.image
+                  }
+                  alt={
+                    getAuthors().find((author) => author.id === blog.authorId)
+                      ?.Name
+                  }
                   className="w-8 h-8 rounded-full mr-2"
                 />
                 <p className="text-sm text-gray-500">
-                  {getAuthors().find((author) => author.id === blog.authorId)?.Name} | {blog.createdDate}
+                  {
+                    getAuthors().find((author) => author.id === blog.authorId)
+                      ?.Name
+                  }{" "}
+                  | {blog.createdDate}
                 </p>
               </div>
             </Link>

@@ -1,25 +1,35 @@
-// src/components/Search.jsx
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { getBlogs, getAuthors } from "../blogData.js";
 
-const Search = ({ searchTerm: initialSearchTerm = "" }) => {
+const Search = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const initialSearchTerm = queryParams.get("term") || "";
   const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
   const [filteredBlogs, setFilteredBlogs] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
+    // Handle direct navigation with a search term
+    const termFromQueryParams = queryParams.get("term") || "";
+    if (termFromQueryParams !== searchTerm) {
+      setSearchTerm(termFromQueryParams);
+    }
+
+    // Filter blogs based on the search term
     const filteredBlogs = getBlogs().filter((blog) =>
-      blog.title.toLowerCase().includes(searchTerm.toLowerCase()),
+      blog.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredBlogs(filteredBlogs);
-  }, [searchTerm]);
+  }, [searchTerm, queryParams]);
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
   const handleSearch = () => {
+    // Update the URL with the new search term
     navigate(`/search?term=${encodeURIComponent(searchTerm)}`);
   };
 
