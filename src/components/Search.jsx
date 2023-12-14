@@ -11,26 +11,24 @@ const Search = () => {
   const [filteredBlogs, setFilteredBlogs] = useState([]);
 
   useEffect(() => {
-    // Handle direct navigation with a search term
     const termFromQueryParams = queryParams.get("term") || "";
+
     if (termFromQueryParams !== searchTerm) {
       setSearchTerm(termFromQueryParams);
     }
-
-    // Filter blogs based on the search term
-    const filteredBlogs = getBlogs().filter((blog) =>
-      blog.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredBlogs(filteredBlogs);
   }, [searchTerm, queryParams]);
 
-  const handleInputChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
+  useEffect(() => {
+    const filteredBlogs = getBlogs().filter((blog) =>
+      blog.title.toLowerCase().includes(searchTerm.toLowerCase()),
+    );
+    setFilteredBlogs(filteredBlogs);
+  }, [searchTerm]);
 
-  const handleSearch = () => {
-    // Update the URL with the new search term
-    navigate(`/search?term=${encodeURIComponent(searchTerm)}`);
+  const handleInputChange = (event) => {
+    const newSearchTerm = event.target.value;
+    setSearchTerm(newSearchTerm);
+    navigate(`/search?term=${encodeURIComponent(newSearchTerm)}`);
   };
 
   return (
@@ -38,20 +36,14 @@ const Search = () => {
       <h2 className="text-2xl font-semibold mb-4 text-center font-inter">
         Search
       </h2>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center w-full">
         <input
           type="text"
-          className="border p-2 mr-2"
+          className="border p-2 mr-2 w-full"
           placeholder="Enter your search term"
           value={searchTerm}
           onChange={handleInputChange}
         />
-        <button
-          className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded"
-          onClick={handleSearch}
-        >
-          Search
-        </button>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
         {filteredBlogs.map((blog) => (
