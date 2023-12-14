@@ -1,24 +1,4 @@
 // src/blogData.js
-const authors = [
-  {
-    id: 1,
-    Name: "John Doe",
-    image:
-      "https://stablo-template.vercel.app/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg%3Fw%3D2000%26auto%3Dformat&w=828&q=75",
-  },
-  {
-    id: 2,
-    Name: "Erika Oliver",
-    image:
-      "https://stablo-template.vercel.app/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2F4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg%3Fw%3D2000%26auto%3Dformat&w=48&q=75",
-  },
-  {
-    id: 3,
-    Name: "Josua Wood",
-    image:
-      "https://stablo-template.vercel.app/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fcd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg%3Frect%3D0%2C0%2C4480%2C3760%26w%3D2000%26auto%3Dformat&w=828&q=75",
-  },
-];
 
 const blogs = [
   {
@@ -163,8 +143,7 @@ To start, add the following HTML codes to your index.html file. These codes incl
 Next, add the following CSS codes to your style.css file to style our login form, along with the glassmorphism effect and floating label animation. These lines of code include various CSS properties like blur, background, background image, etc. to achieve the desired Glassmorphism effect.
 <br><br>
 <div class="container w-full prose h-96 overflow-y-auto rounded-md">
-<pre class="code-block">
-<code class="language-html">
+<pre id="css-code" class="line-numbers rounded-md"><code class="language-css line-numbers">
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
 
 * {
@@ -679,6 +658,76 @@ header .navbar {
     createdDate: "2023-12-13",
     tags: ['Html-css-js', 'Web Development', 'React'],
     authorId: 1,
+  },
+  {
+    id: 7,
+    title:'The Future of Mobile Apps',
+    content: 'Learn about the future of mobile apps using React Native in this blog post.',
+    image: 'https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75',
+    categories: ["Coding"],categories: ["Coding"],
+      createdDate: "2023-12-13",
+      tags: ['Html-css-js', 'Web Development', 'React'],
+      authorId: 1,
+  },
+  {
+    id: 8,
+    title:'The Future of Mobile Apps',
+    content: 'Learn about the future of mobile apps using React Native in this blog post.',
+    image: 'https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75',
+    categories: ["Coding"],categories: ["Coding"],
+      createdDate: "2023-12-13",
+      tags: ['Html-css-js', 'Web Development', 'React'],
+      authorId: 1,
+  },
+  {
+    id: 9,
+    title:'The Future of Mobile Apps',
+    content: 'Learn about the future of mobile apps using React Native in this blog post.',
+    image: 'https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75',
+    categories: ["Coding"],categories: ["Coding"],
+      createdDate: "2023-12-13",
+      tags: ['Html-css-js', 'Web Development', 'React'],
+      authorId: 1,
+  },
+  {
+    id: 10,
+    title:'The Future of Mobile Apps',
+    content: 'Learn about the future of mobile apps using React Native in this blog post.',
+    image: 'https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75',
+    categories: ["Coding"],categories: ["Coding"],
+      createdDate: "2023-12-13",
+      tags: ['Html-css-js', 'Web Development', 'React'],
+      authorId: 1,
+  },
+  {
+    id: 11,
+    title:'The Future of Mobile Apps',
+    content: 'Learn about the future of mobile apps using React Native in this blog post.',
+    image: 'https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75',
+    categories: ["Coding"],categories: ["Coding"],
+      createdDate: "2023-12-13",
+      tags: ['Html-css-js', 'Web Development', 'React'],
+      authorId: 1,
+  },
+  {
+    id: 12,
+    title:'The Future of Mobile Apps',
+    content: 'Learn about the future of mobile apps using React Native in this blog post.',
+    image: 'https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75',
+    categories: ["Coding"],categories: ["Coding"],
+      createdDate: "2023-12-13",
+      tags: ['Html-css-js', 'Web Development', 'React'],
+      authorId: 1,
+  },
+  {
+    id: 13,
+    title:'The Future of Mobile Apps',
+    content: 'Learn about the future of mobile apps using React Native in this blog post.',
+    image: 'https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75',
+    categories: ["Coding"],categories: ["Coding"],
+      createdDate: "2023-12-13",
+      tags: ['Html-css-js', 'Web Development', 'React'],
+      authorId: 1,
   },
 ];
 

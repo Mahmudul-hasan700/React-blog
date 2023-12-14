@@ -2,7 +2,8 @@
 import React from "react";
 import { Helmet } from 'react-helmet';
 import { useParams, Link } from "react-router-dom";
-import { getBlogById, getAuthors, getBlogs } from "../blogData.js";
+import { getAuthors } from "../Authors.js";
+import { getBlogById, getBlogs } from "../blogData.js";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -76,8 +77,9 @@ const BlogDetails = () => {
 
       <div className="mt-8 flex items-center justify-center w-full">
         <Link to="/">
-          <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded flex items-center justify-center gap-2">
-            View all posts
+          <button className="bg-transparent  text-indigo-500 font-semibold py-2 px-4 rounded flex items-center justify-center gap-1"><svg class="w-5 h-5" ariahidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+    <path stroke="currentColor" strokelinecap="round" strokelinejoin="round" strokewidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+  </svg>View all posts
           </button>
         </Link>
       </div>

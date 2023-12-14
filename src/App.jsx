@@ -11,6 +11,7 @@ import Search from "./components/Search.jsx";
 import CategoryPage from "./components/CategoryPage.jsx";
 import TagPage from './components/TagPage.jsx'; 
 import { getBlogs } from "./blogData.js";
+import AllSearchResults from "./components/AllSearchResults.jsx";
 import "./App.css";
 import "./index.css";
 
@@ -36,6 +37,7 @@ const App = () => {
             <Route path="/blog/:id" element={<BlogDetails />} />
             <Route path="/category/:category" element={<CategoryPage />} />
             <Route path="/tag/:tag" element={<TagPage />} />
+             <Route path="/search/all/:term" element={<AllSearchResults />} />
             <Route path="/search" element={<Search searchTerm={searchTerm} />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />

@@ -1,7 +1,8 @@
 // src/components/Home.jsx
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { getBlogs, getAuthors } from "../blogData.js";
+import { getAuthors } from "../Authors.js";
+import { getBlogs } from "../blogData.js";
 
 const Home = ({ searchTerm }) => {
   const pageSize = 10; // Number of blogs per page
@@ -99,14 +100,14 @@ const Home = ({ searchTerm }) => {
           className={`flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 ${
             currentPage === 1
               ? "bg-gray-200 text-gray-700 cursor-not-allowed"
-              : "bg-indigo-500 text-white"
+              : "bg-[#4db1eb] text-white border-none"
           }`}
           disabled={currentPage === 1}
         >
           {" "}
           <svg
             className="w-3.5 h-3.5 me-2 rtl:rotate-180"
-            ariahidden="true"
+            aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 14 10"
@@ -114,8 +115,8 @@ const Home = ({ searchTerm }) => {
             <path
               stroke="currentColor"
               stroke-linecap="round"
-              strokelinejoin="round"
-              strokewidth="2"
+              stroke-linejoin="round"
+              stroke-width="2"
               d="M13 5H1m0 0 4 4M1 5l4-4"
             />
           </svg>
@@ -127,7 +128,7 @@ const Home = ({ searchTerm }) => {
             onClick={() => handlePageChange(index + 1)}
             className={`flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 ${
               currentPage === index + 1
-                ? "bg-indigo-500 text-white"
+                ? "bg-[#4db1eb] text-white border-none"
                 : "bg-gray-200 text-gray-700"
             }`}
           >
@@ -139,23 +140,23 @@ const Home = ({ searchTerm }) => {
           className={`flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 ${
             currentPage === totalPages
               ? "bg-gray-200 text-gray-700 cursor-not-allowed"
-              : "bg-indigo-500 text-white"
+              : "bg-[#4db1eb] text-white border-none"
           }`}
           disabled={currentPage === totalPages}
         >
           Next{" "}
           <svg
             className="w-3.5 h-3.5 me-2 rtl:rotate-180"
-            ariahidden="true"
+            aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 14 10"
           >
             <path
               stroke="currentColor"
-              strokelinecap="round"
-              strokelinejoin="round"
-              strokewidth="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
               d="M1 5h12m0 0L9 1m4 4L9 9"
             />
           </svg>
