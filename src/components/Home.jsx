@@ -40,10 +40,29 @@ const Home = ({ searchTerm }) => {
     }
   };
 
+  // Function to count the number of blogs per category
+  const countBlogsPerCategory = () => {
+    const blogCountPerCategory = {};
+
+    getBlogs().forEach((blog) => {
+      blog.categories.forEach((category) => {
+        if (blogCountPerCategory[category]) {
+          blogCountPerCategory[category]++;
+        } else {
+          blogCountPerCategory[category] = 1;
+        }
+      });
+    });
+
+    return blogCountPerCategory;
+  };
+
+  const blogCountPerCategory = countBlogsPerCategory();
+
   return (
     <div className="w-full">
       <h2 className="text-2xl font-semibold mb-4 text-center font-inter">
-        Latest Blogs
+        LATEST ARTICLES
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {displayedBlogs.map((blog) => (
@@ -107,16 +126,16 @@ const Home = ({ searchTerm }) => {
           {" "}
           <svg
             className="w-3.5 h-3.5 me-2 rtl:rotate-180"
-            aria-hidden="true"
+            ariahidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 14 10"
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokelinecap="round"
+              strokelinejoin="round"
+              strokewidth="2"
               d="M13 5H1m0 0 4 4M1 5l4-4"
             />
           </svg>
@@ -147,20 +166,38 @@ const Home = ({ searchTerm }) => {
           Next{" "}
           <svg
             className="w-3.5 h-3.5 me-2 rtl:rotate-180"
-            aria-hidden="true"
+            ariahidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 14 10"
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokelinecap="round"
+              strokelinejoin="round"
+              strokewidth="2"
               d="M1 5h12m0 0L9 1m4 4L9 9"
             />
           </svg>
         </button>
+      </div>
+
+      {/* Category List */}
+      <div className="mt-8 w-full">
+        <h2 className="text-2xl font-semibold mb-4 text-center font-inter">
+          CATEGORIES
+        </h2>
+        <div className="w-full md:grid md:grid-cols-2 md:gap-2 flex flex-wrap justify-center gap-4">
+          {Object.keys(blogCountPerCategory).map((category) => (
+            <Link
+              key={category}
+              to={`/category/${category}`}
+              className="text-indigo-500 hover:underline"
+            >
+              {category} ({blogCountPerCategory[category]})
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useLocation } from "react-router-dom";
-import { getBlogs, getAuthors } from "../blogData.js";
+import { getAuthors } from "../Authors.js";
+import { getBlogs } from "../blogData.js";
 
 const CategoryPage = () => {
   const { category } = useParams();
@@ -11,14 +12,14 @@ const CategoryPage = () => {
     // Fetch blogs based on the category
     const fetchBlogs = () => {
       const blogs = getBlogs().filter((blog) =>
-        blog.categories.includes(category)
+        blog.categories.includes(category),
       );
       setBlogsInCategory(blogs);
     };
 
     // Handle direct navigation with a category
     const categoryFromQueryParams = new URLSearchParams(location.search).get(
-      "category"
+      "category",
     );
     if (categoryFromQueryParams && categoryFromQueryParams !== category) {
       fetchBlogs();

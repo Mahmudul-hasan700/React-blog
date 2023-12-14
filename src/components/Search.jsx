@@ -30,7 +30,7 @@ const Search = () => {
     }
 
     const filteredBlogs = getBlogs().filter((blog) =>
-      blog.title.toLowerCase().includes(searchTerm.toLowerCase())
+      blog.title.toLowerCase().includes(searchTerm.toLowerCase()),
     );
 
     setFilteredBlogs(filteredBlogs);
@@ -58,8 +58,8 @@ const Search = () => {
       <div className="flex items-center justify-center">
         <input
           type="text"
-          className="border p-2 mr-2"
-          placeholder="Enter your search term"
+          className="border border-gray-300 p-2 mr-2 outline-none rounded-md w-full focus:border-blue-500"
+          placeholder="Enter your search"
           value={searchTerm}
           onChange={handleInputChange}
         />
@@ -113,7 +113,9 @@ const Search = () => {
       </div>
       {filteredBlogs.length > blogsPerPage && (
         <div className="flex justify-center mt-4">
-          {Array.from({ length: Math.ceil(filteredBlogs.length / blogsPerPage) }).map((_, index) => (
+          {Array.from({
+            length: Math.ceil(filteredBlogs.length / blogsPerPage),
+          }).map((_, index) => (
             <button
               key={index}
               className={`mx-2 px-4 py-2 bg-indigo-500 text-white rounded ${
