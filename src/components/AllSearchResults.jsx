@@ -5,6 +5,10 @@ import { getAuthors } from "../Authors.js";
 import { getBlogs } from "../blogData.js";
 
 const AllSearchResults = () => {
+  const myStyle = {
+    fontFamily: 'Inter, sans-serif',
+  };
+  
   const { term } = useParams();
   const [searchTerm, setSearchTerm] = useState(term);
   const [allBlogs, setAllBlogs] = useState([]);
@@ -28,7 +32,7 @@ const AllSearchResults = () => {
 
   return (
     <div>
-      <h2 className="text-2xl font-semibold mb-4 text-center font-inter">
+      <h2 className="text-2xl font-semibold mb-4 text-center" style={myStyle}>
         All Search Results for: {searchTerm}
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">

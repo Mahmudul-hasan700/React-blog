@@ -5,6 +5,11 @@ import { getAuthors } from "../Authors.js";
 import { getBlogById, getBlogs } from "../blogData.js";
 
 const BlogDetails = () => {
+  const myStyle = {
+    fontFamily: "Inter, sans-serif",
+    fontSize: "16px",
+  };
+
   const { id } = useParams();
   const blog = getBlogById(id);
   const allBlogs = getBlogs();
@@ -79,7 +84,10 @@ const BlogDetails = () => {
   return (
     <div>
       <div className="bg-white p-2">
-        <h2 className="text-lg font-semibold text-gray-900 mb-2">
+        <h2
+          className="text-lg font-semibold text-gray-900 mb-2"
+          style={myStyle}
+        >
           {blog.title}
         </h2>
         <div className="flex items-center mb-4">
@@ -106,7 +114,8 @@ const BlogDetails = () => {
           ))}
         </div>
         <div
-          className="text-[15px]"
+          className="text-16px"
+          style={myStyle}
           dangerouslySetInnerHTML={{ __html: blog.content }}
         />
       </div>

@@ -5,7 +5,11 @@ import { getAuthors } from "../Authors.js";
 import { getBlogs } from "../blogData.js";
 
 const Home = ({ searchTerm }) => {
-  const pageSize = 10; // Number of blogs per page
+  const myStyle = {
+    fontFamily: 'Inter, sans-serif',
+  };
+  
+  const pageSize = 10; 
   const [currentPage, setCurrentPage] = useState(1);
 
   // Get filtered blogs based on the search term
@@ -61,7 +65,7 @@ const Home = ({ searchTerm }) => {
 
   return (
     <div className="w-full">
-      <h2 className="text-2xl font-semibold mb-4 text-center font-inter">
+      <h2 className="text-2xl font-semibold mb-4 text-center" style={myStyle}>
         LATEST ARTICLES
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -73,7 +77,7 @@ const Home = ({ searchTerm }) => {
                 alt={blog.title}
                 className="mb-2 rounded-md h-32 w-full object-cover"
               />
-              <p className="text-lg font-semibold text-gray-900 hover:underline line-clamp-3 text-ellipsis">
+              <p className="text-lg font-semibold text-gray-900 hover:underline line-clamp-3 text-ellipsis" style={myStyle}>
                 {blog.title}
               </p>
               <div className="flex items-center mb-2">
@@ -99,7 +103,7 @@ const Home = ({ searchTerm }) => {
                   }
                   className="w-8 h-8 rounded-full mr-2"
                 />
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500" style={myStyle}>
                   {
                     getAuthors().find((author) => author.id === blog.authorId)
                       ?.Name
@@ -192,7 +196,7 @@ const Home = ({ searchTerm }) => {
             <Link
               key={category}
               to={`/category/${category}`}
-              className="text-indigo-500 hover:underline"
+              className="text-indigo-500 hover:underline text-[17px]"
             >
               {category} ({blogCountPerCategory[category]})
             </Link>
