@@ -10,7 +10,7 @@ const BlogList = ({ filteredBlogs }) => (
         key={blog.id}
         className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 cursor-pointer"
       >
-        <Link to={`/blog/${blog.id}`}>
+        <Link to={`/blog/${blog.title}`}>
           <img
             src={blog.image}
             alt={blog.title}

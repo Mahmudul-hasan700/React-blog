@@ -32,15 +32,14 @@ const App = () => {
     <Router>
       <div>
         <Navbar onSearch={handleSearch} />
-        <div className="w-full container mx-auto p-4">
+        <div className="w-full p-4">
           <Routes>
             <Route path="/" element={<Home searchTerm={searchTerm} />} />
             <Route path="/blog/:id" element={<BlogDetails />} />
             <Route path="/category/:category" element={<CategoryPage />} />
             <Route path="/tag/:tag" element={<TagPage />} />
             <Route path="/search/all/:term" element={<AllSearchResults />} />
-            <Route
-              path="/search"
+            <Route path="/search"
               element={<Search searchTerm={searchTerm} />}
             />
             <Route path="/about" element={<About />} />
