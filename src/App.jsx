@@ -7,6 +7,7 @@ import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
 import Home from "./components/Home.jsx";
 import BlogDetails from "./components/BlogDetails.jsx";
+import { getBlogById, getBlogs } from "./blogData.js";
 import Search from "./components/Search.jsx";
 import CategoryPage from "./components/CategoryPage.jsx";
 import TagPage from "./components/TagPage.jsx";
