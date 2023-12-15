@@ -14,7 +14,8 @@ import PrivacyPolicy from "./components/PrivacyPolicy.jsx";
 import TermsConditions from "./components/TermsConditions.jsx";
 import AllSearchResults from "./components/AllSearchResults.jsx";
 import "./App.css";
-import "./index.css";
+import "./index.css"
+import "./styles/App.css";
 
 const App = () => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
