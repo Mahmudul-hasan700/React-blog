@@ -324,7 +324,8 @@ To create a responsive Fiverr-inspired Homepage using HTML and CSS, follow these
 <p class="text-gray-700">To start, add the following HTML codes to your <code>index.html</code> file. These codes include a navigation bar (nav), sections, input fields, links, and various other tags necessary for your webpage. Additionally, this code includes a few lines of JavaScript code to toggle the mobile menu on small screens.</p>
 <br><br>
 <div class="code-container overflow-auto h-[500px]">
-    <pre class="code-block"><code class="language-html">
+    <pre class="code-block">
+    <code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;!-- Coding By CodingNepal - www.codingnepalweb.com --&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -703,8 +704,14 @@ Steps to Build AI Image Generator Website HTML & JavaScript
   <br><br>
   To start, add the following HTML codes to your <code>index.html</code> file. These codes include essential HTML markup with different semantic tags, such as div, form, input, button, image, etc., to build the website layout.
   <br><br>
-  <div class="code-container overflow-auto h-[500px]">
-    <pre class="code-block">
+  <div class="code-container overflow-auto max-h-[500px]">
+    <pre>
+    <code class="language-html">
+    Your HTML code here...</code></pre>
+  </div>
+<br><br>
+  <div class="code-container overflow-auto max-h-[500px]">
+    <pre>
     <code class="language-css">
 /* Importing Google font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");

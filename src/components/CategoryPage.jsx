@@ -9,8 +9,8 @@ const CategoryPage = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Fetch blogs based on the category
     const fetchBlogs = () => {
+      // Filter blogs based on the category
       const blogs = getBlogs().filter((blog) =>
         blog.categories.includes(category),
       );
@@ -50,33 +50,30 @@ const CategoryPage = () => {
                 {blog.categories.map((category, index) => (
                   <Link
                     key={index}
-                    to={`/category/${category}`} // Link to the category page
+                    to={`/category/${category}`}
                     className="text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded-full mr-2"
                   >
                     {category}
                   </Link>
                 ))}
               </div>
-              {/* Displaying author information for related blog */}
               <div className="flex items-center mb-4">
-                <img
-                  src={
-                    getAuthors().find((author) => author.id === blog.authorId)
-                      ?.image
-                  }
-                  alt={
+                By
+                <Link
+                  to={`/author/${
                     getAuthors().find((author) => author.id === blog.authorId)
                       ?.Name
-                  }
-                  className="w-8 h-8 rounded-full mr-2"
-                />
-                <p className="text-sm text-gray-500">
-                  {
-                    getAuthors().find((author) => author.id === blog.authorId)
-                      ?.Name
-                  }{" "}
-                  | {blog.createdDate}
-                </p>
+                  }`}
+                  className="flex ml-2"
+                >
+                  <p className="text-blue-400">
+                    {
+                      getAuthors().find((author) => author.id === blog.authorId)
+                        ?.Name
+                    }{" "}
+                  </p>
+                </Link>
+                -<p className="text-gray-600">{blog.createdDate}</p>
               </div>
             </Link>
           </div>
