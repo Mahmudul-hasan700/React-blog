@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getAuthors } from "../Authors.js";
 import { getBlogById, getBlogs } from "../blogData.js";
+import hljs from "highlight.js";
+import "highlight.js/styles/default.css"; // Include the desired Highlight.js style
 
 const BlogDetails = () => {
   const myStyle = {
@@ -57,11 +59,12 @@ const BlogDetails = () => {
         textArea.select();
         document.execCommand("copy");
         document.body.removeChild(textArea);
+        copyButton.textContent = "Copied!";
       });
 
       container.appendChild(copyButton);
     });
-  }, []); // Empty dependency array to ensure useEffect runs only once on mount
+  }, []);
 
   // Function to share on Twitter
   const shareOnTwitter = () => {

@@ -2,17 +2,7 @@
 
 .code-container {
   position: relative;
-}
-
-.code-container::before {
-  content: counter(line);
-  counter-increment: line;
-  position: absolute;
-  left: -2em;
-  text-align: right;
-  width: 2em;
-  color: #999;
-  user-select: none;
+  border-radius: 5px;
 }
 
 .copy-button {
