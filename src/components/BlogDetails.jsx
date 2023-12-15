@@ -33,6 +33,7 @@ const BlogDetails = () => {
           </Link>
         </div>
         {/* Display other blogs in grid style */}
+        <p className="text-center text-gray-500 text-lg md:text:xl font-medium">OUR LATEST POSTS</p>
         <div className="mt-10 grid grid-cols-1 gap-2 md:grid-cols-2">
           {allBlogs.slice(0, 5).map((otherBlog) => (
             <div key={otherBlog.id} className="flex md:flex flex-col mb-4">
@@ -50,10 +51,12 @@ const BlogDetails = () => {
                     {otherBlog.title}
                   </h2>
                   <p className="text-gray-600">
-                    {getAuthors().find(
+                    {
+                      getAuthors().find(
                         (author) => author.id === otherBlog.authorId,
                       )?.Name
-                    } - {otherBlog.createdDate}
+                    }{" "}
+                    - {otherBlog.createdDate}
                   </p>
                 </div>
               </Link>
