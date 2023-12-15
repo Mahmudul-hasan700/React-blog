@@ -34,10 +34,10 @@ const blogs = [
       rather than topical solutions to the challenges they face.
     `,
     image:
-      "https://stablo-template.vercel.app/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fb7d2fa6d0b250bd1e0c601645319db4cde42a01e-3958x5937.jpg%3Fw%3D2000%26auto%3Dformat&w=384&q=75",
+      "https://www.analyticsinsight.net/wp-content/uploads/2023/12/6-Programming-Languages-Every-Robotics-Developer-Must-Know.jpg",
     categories: ["Travel"],
-    createdDate: "2023-12-09", // Add a created date
-    authorId: 2, // Link to the author by ID
+    createdDate: "2023-12-09",
+    authorId: 2,
   },
   {
     id: 3,
@@ -97,9 +97,9 @@ To create a Login Form with a glassmorphism effect and floating input label anim
 <br><br>
 To start, add the following HTML codes to your index.html file. These codes include essential HTML elements such as forms, input, links, buttons, and others. For basic form validation, I’ve also included the “required” attribute for the input fields.
 <br><br>
-<div class="container w-full prose h-96 overflow-y-auto rounded-md">
-<pre class="code-block">
-<code class="language-html">
+<div class="code-container overflow-auto h-[500px]">
+    <pre class="code-block">
+    <code class="language-html line-numbers">
 &lt;!DOCTYPE html&gt;
 &lt;!-- Coding By CodingNepal - www.codingnepalweb.com --&gt;
 &lt;html&gt;
@@ -141,8 +141,9 @@ To start, add the following HTML codes to your index.html file. These codes incl
 <br><br>
 Next, add the following CSS codes to your style.css file to style our login form, along with the glassmorphism effect and floating label animation. These lines of code include various CSS properties like blur, background, background image, etc. to achieve the desired Glassmorphism effect.
 <br><br>
-<div class="container w-full prose h-96 overflow-y-auto rounded-md">
-<pre id="css-code" class="line-numbers rounded-md"><code class="language-css line-numbers">
+<div class="code-container overflow-auto h-[500px]">
+    <pre class="code-block">
+  <code class="language-css line-numbers">
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
 
 * {
@@ -322,9 +323,8 @@ To create a responsive Fiverr-inspired Homepage using HTML and CSS, follow these
 <br><br>
 <p class="text-gray-700">To start, add the following HTML codes to your <code>index.html</code> file. These codes include a navigation bar (nav), sections, input fields, links, and various other tags necessary for your webpage. Additionally, this code includes a few lines of JavaScript code to toggle the mobile menu on small screens.</p>
 <br><br>
-<div class="container w-full prose h-96 overflow-y-auto rounded-md">
-<pre class="code-block">
-<code class="language-html">
+<div class="code-container overflow-auto h-[500px]">
+    <pre class="code-block"><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;!-- Coding By CodingNepal - www.codingnepalweb.com --&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -393,8 +393,8 @@ To create a responsive Fiverr-inspired Homepage using HTML and CSS, follow these
   Next, add the following CSS codes to your <code>style.css</code> file to make your webpage look like the Fiverr Homepage. These codes include various styles for elements like color, background, border, and even the homepage image. Additionally, they make your webpage responsive using media queries.
 </p>
 <br><br>
-<div class="container w-full prose h-96 overflow-y-auto rounded-md">
-  <pre class="code-block">
+<div class="code-container overflow-auto h-[500px]">
+    <pre class="code-block">
     <code class="language-css">
 /* Importing Google font - Fira Sans */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
@@ -670,8 +670,7 @@ header .navbar {
   {
     id: 7,
     title: "Build An AI Image Generator Website in HTML CSS and JavaScript.",
-    content:
-      `Websites like Midjourney and DALL-E have gained significant popularity in recent months or years for their ability to generate creative and imaginative images using AI. If you’re a beginner web developer, have you ever considered creating your own version of an AI image generator website? The great news is that with the help of only HTML, CSS, and JavaScript, you too can build a website like Midjourney or DALL-E.
+    content: `Websites like Midjourney and DALL-E have gained significant popularity in recent months or years for their ability to generate creative and imaginative images using AI. If you’re a beginner web developer, have you ever considered creating your own version of an AI image generator website? The great news is that with the help of only HTML, CSS, and JavaScript, you too can build a website like Midjourney or DALL-E.
      <br><br>
       If you’re unfamiliar, Midjourny and DALL-E are AI image-generation websites. They use a machine-learning model to create images based on text descriptions. Users can input their desired image prompt, and these websites will generate a corresponding image that matches the description.
 <br><br>
@@ -704,7 +703,9 @@ Steps to Build AI Image Generator Website HTML & JavaScript
   <br><br>
   To start, add the following HTML codes to your <code>index.html</code> file. These codes include essential HTML markup with different semantic tags, such as div, form, input, button, image, etc., to build the website layout.
   <br><br>
-  <pre class="language-css overflow-auto h-[500px]"><code class="language-css">
+  <div class="code-container overflow-auto h-[500px]">
+    <pre class="code-block">
+    <code class="language-css">
 /* Importing Google font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
@@ -929,13 +930,16 @@ Steps to Build AI Image Generator Website HTML & JavaScript
     width: 100%;
   }
 }
-</pre></code>
+</pre></code></div>
 <br><br>
 
 <br><br>
-<pre class="language-javascript overflow-auto h-[500px]"><code class="language-html">
+<div class="code-container overflow-auto max-h-[500px]">
+    <pre class="code-block">
+    <code class="language-js">
 console.log('hello');
 </pre></code>
+</div>
 
 <br><br>
       `,
@@ -943,82 +947,15 @@ console.log('hello');
       "https://www.codingnepalweb.com/wp-content/uploads/2023/09/Build-An-AI-Image-Generator-Website-in-HTML-CSS-and-JavaScript.jpg",
     categories: ["API Projects"],
     createdDate: "2023-12-15",
-    tags: ["AI", "AI Image Generator", "AI Powered Image Generation", "Artificial Intelligence", "ChatGPT", " CSS, "],
+    tags: [
+      "AI",
+      "AI Image Generator",
+      "AI Powered Image Generation",
+      "Artificial Intelligence",
+      "ChatGPT",
+      "CSS",
+    ],
     authorId: 2,
-  },
-  {
-    id: 8,
-    title: "The Future of Mobile Apps",
-    content:
-      "Learn about the future of mobile apps using React Native in this blog post.",
-    image:
-      "https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75",
-    categories: ["Coding"],
-    createdDate: "2023-12-13",
-    tags: ["Html-css-js", "Web Development", "React"],
-    authorId: 1,
-  },
-  {
-    id: 9,
-    title: "The Future of Mobile Apps",
-    content:
-      "Learn about the future of mobile apps using React Native in this blog post.",
-    image:
-      "https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75",
-    categories: ["Coding"],
-    categories: ["Coding"],
-    createdDate: "2023-12-13",
-    tags: ["Html-css-js", "Web Development", "React"],
-    authorId: 1,
-  },
-  {
-    id: 10,
-    title: "The Future of Mobile Apps",
-    content:
-      "Learn about the future of mobile apps using React Native in this blog post.",
-    image:
-      "https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75",
-    categories: ["Coding"],
-    categories: ["Coding"],
-    createdDate: "2023-12-13",
-    tags: ["Html-css-js", "Web Development", "React"],
-    authorId: 1,
-  },
-  {
-    id: 11,
-    title: "The Future of Mobile Apps",
-    content:
-      "Learn about the future of mobile apps using React Native in this blog post.",
-    image:
-      "https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75",
-    categories: ["Coding"],
-    createdDate: "2023-12-13",
-    tags: ["Html-css-js", "Web Development", "React"],
-    authorId: 1,
-  },
-  {
-    id: 12,
-    title: "The Future of Mobile Apps",
-    content:
-      "Learn about the future of mobile apps using React Native in this blog post.",
-    image:
-      "https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75",
-    categories: ["Coding"],
-    createdDate: "2023-12-13",
-    tags: ["Html-css-js", "Web Development", "React"],
-    authorId: 1,
-  },
-  {
-    id: 13,
-    title: "The Future of Mobile Apps",
-    content:
-      "Learn about the future of mobile apps using React Native in this blog post.",
-    image:
-      "https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75",
-    categories: ["Coding"],
-    createdDate: "2023-12-13",
-    tags: ["Html-css-js", "Web Development", "React"],
-    authorId: 1,
   },
 ];
 

@@ -30,8 +30,7 @@ const App = () => {
 
   return (
     <Router>
-      <div
-      >
+      <div>
         <Navbar onSearch={handleSearch} />
         <div className="w-full p-4">
           <Routes>
@@ -40,8 +39,7 @@ const App = () => {
             <Route path="/category/:category" element={<CategoryPage />} />
             <Route path="/tag/:tag" element={<TagPage />} />
             <Route path="/search/all/:term" element={<AllSearchResults />} />
-            <Route
-              path="/search"
+            <Route path="/search"
               element={<Search searchTerm={searchTerm} />}
             />
             <Route path="/about" element={<About />} />
