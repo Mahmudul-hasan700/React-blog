@@ -13,8 +13,9 @@ import TagPage from "./components/TagPage.jsx";
 import PrivacyPolicy from "./components/PrivacyPolicy.jsx";
 import TermsConditions from "./components/TermsConditions.jsx";
 import AllSearchResults from "./components/AllSearchResults.jsx";
+import AuthorPage from "./components/AuthorPage.jsx"; // Import the new component
 import "./App.css";
-import "./index.css"
+import "./index.css";
 import "./styles/App.css";
 
 const App = () => {
@@ -40,13 +41,12 @@ const App = () => {
             <Route path="/category/:category" element={<CategoryPage />} />
             <Route path="/tag/:tag" element={<TagPage />} />
             <Route path="/search/all/:term" element={<AllSearchResults />} />
-            <Route path="/search"
-              element={<Search searchTerm={searchTerm} />}
-            />
+            <Route path="/search" element={<Search searchTerm={searchTerm} />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-conditions" element={<TermsConditions />} />
+            <Route path="/author/:authorName" element={<AuthorPage />} />
           </Routes>
         </div>
         <Footer />

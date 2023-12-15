@@ -33,31 +33,45 @@ const BlogDetails = () => {
           </Link>
         </div>
         {/* Display other blogs in grid style */}
-        <p className="text-center text-gray-500 text-lg md:text:xl font-medium">OUR LATEST POSTS</p>
+        <p className="text-center text-gray-500 text-lg md:text:xl font-medium">
+          OUR LATEST POSTS
+        </p>
         <div className="mt-10 grid grid-cols-1 gap-2 md:grid-cols-2">
           {allBlogs.slice(0, 5).map((otherBlog) => (
-            <div key={otherBlog.id} className="flex md:flex flex-col mb-4">
-              {/* Use Link for navigation */}
-              <Link to={`/blog/${otherBlog.id}`} className="flex">
+            <div key={otherBlog.id} className="flex details mb-4">
+              <Link
+                to={`/blogs/${otherBlog.id}`}
+                className="flex cursor-default"
+              >
                 <div className="thumbnail">
                   <img
-                    className="mr-2 max-w-md h-24"
+                    className="mr-2 max-w-md h-24 cursor-pointer"
                     src={otherBlog.image}
                     alt={otherBlog.title}
                   />
                 </div>
                 <div className="title ml-4">
-                  <h2 className="text-xl font-semibold line-clamp-2">
+                  <h2 className="text-xl font-semibold line-clamp-2 cursor-pointer">
                     {otherBlog.title}
                   </h2>
-                  <p className="text-gray-600">
-                    {
-                      getAuthors().find(
-                        (author) => author.id === otherBlog.authorId,
-                      )?.Name
-                    }{" "}
-                    - {otherBlog.createdDate}
-                  </p>
+                  <div className="flex">
+                    <Link
+                      to={`/author/${
+                        getAuthors().find(
+                          (author) => author.id === otherBlog.authorId,
+                        )?.Name
+                      }`}
+                    >
+                      <p className="text-blue-400 font-medium">
+                        {
+                          getAuthors().find(
+                            (author) => author.id === otherBlog.authorId,
+                          )?.Name
+                        }{" "}
+                      </p>
+                    </Link>
+                    <p className="text-gray-600">- {otherBlog.createdDate}</p>
+                  </div>
                 </div>
               </Link>
             </div>
@@ -142,10 +156,17 @@ const BlogDetails = () => {
         </h2>
         <div className="flex items-center mb-4">
           By
-          <p className="ml-2 text-sm text-blue-500 font-semibold">
-            {getAuthors().find((author) => author.id === blog.authorId)?.Name} -{" "}
-            {blog.createdDate}
-          </p>
+          <Link
+            to={`/author/${
+              getAuthors().find((author) => author.id === blog.authorId)?.Name
+            }`}
+            className="flex ml-2"
+          >
+            <p className="text-blue-400 font-mediun">
+              {getAuthors().find((author) => author.id === blog.authorId)?.Name}{" "}
+            </p>
+          </Link>
+          -<p className="text-gray-600">{blog.createdDate}</p>
         </div>
         <img
           src={blog.image}
@@ -251,27 +272,22 @@ const BlogDetails = () => {
                 ))}
               </div>
               <div className="flex items-center mb-4">
-                <img
-                  src={
-                    getAuthors().find(
-                      (author) => author.id === relatedBlog.authorId,
-                    )?.image
-                  }
-                  alt={
-                    getAuthors().find(
-                      (author) => author.id === relatedBlog.authorId,
-                    )?.Name
-                  }
-                  className="w-8 h-8 rounded-full mr-2"
-                />
-                <p className="text-sm text-gray-500">
-                  {
-                    getAuthors().find(
-                      (author) => author.id === relatedBlog.authorId,
-                    )?.Name
-                  }{" "}
-                  | {relatedBlog.createdDate}
-                </p>
+                By
+                <Link
+                  to={`/author/${
+                    getAuthors().find((author) => author.id === blog.authorId)
+                      ?.Name
+                  }`}
+                  className="flex ml-1"
+                >
+                  <p className="text-blue-400 font-medium">
+                    {
+                      getAuthors().find((author) => author.id === blog.authorId)
+                        ?.Name
+                    }{" "}
+                  </p>
+                </Link>
+                -<p className="text-gray-600">{blog.createdDate}</p>
               </div>
             </Link>
           </div>

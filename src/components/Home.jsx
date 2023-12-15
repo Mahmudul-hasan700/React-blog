@@ -97,25 +97,23 @@ const Home = ({ searchTerm }) => {
                   </Link>
                 ))}
               </div>
-              <div className="flex items-center mb-4">
-                <img
-                  src={
-                    getAuthors().find((author) => author.id === blog.authorId)
-                      ?.image
-                  }
-                  alt={
+              <div className="flex items-center mb-2 gap-1">
+                By
+                <Link
+                  to={`/author/${
                     getAuthors().find((author) => author.id === blog.authorId)
                       ?.Name
-                  }
-                  className="w-8 h-8 rounded-full mr-2"
-                />
-                <p className="text-sm text-gray-500" style={myStyle}>
-                  {
-                    getAuthors().find((author) => author.id === blog.authorId)
-                      ?.Name
-                  }{" "}
-                  | {blog.createdDate}
-                </p>
+                  }`}
+                  className="flex ml-1"
+                >
+                  <p className="text-blue-400">
+                    {
+                      getAuthors().find((author) => author.id === blog.authorId)
+                        ?.Name
+                    }{" "}
+                  </p>
+                </Link>
+                -<p className="text-gray-600">{blog.createdDate}</p>
               </div>
             </Link>
           </div>
@@ -140,8 +138,10 @@ const Home = ({ searchTerm }) => {
           <button
             key={index}
             onClick={() => handlePageChange(index + 1)}
-            className={`flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 border border-gray-300 rounded-lg ${currentPage === index + 1
-                ? "bg-[#4db1eb] text-white border-none" : "bg-gray-200 text-gray-700"
+            className={`flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 border border-gray-300 rounded-lg ${
+              currentPage === index + 1
+                ? "bg-[#4db1eb] text-white border-none"
+                : "bg-gray-200 text-gray-700"
             }`}
           >
             {index + 1}
@@ -156,8 +156,7 @@ const Home = ({ searchTerm }) => {
           }`}
           disabled={currentPage === totalPages}
         >
-          Next{" "}
-          <i className="fas fa-arrow-right"></i>
+          Next <i className="fas fa-arrow-right"></i>
         </button>
       </div>
 

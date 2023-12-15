@@ -1,4 +1,3 @@
-// Search.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { getBlogs } from "../blogData.js";
@@ -87,25 +86,23 @@ const Search = () => {
                   </Link>
                 ))}
               </div>
-              <div className="flex items-center mb-4">
-                <img
-                  src={
-                    getAuthors().find((author) => author.id === blog.authorId)
-                      ?.image
-                  }
-                  alt={
+              <div className="flex items-center gap-1 mb-2">
+                By
+                <Link
+                  to={`/author/${
                     getAuthors().find((author) => author.id === blog.authorId)
                       ?.Name
-                  }
-                  className="w-8 h-8 rounded-full mr-2"
-                />
-                <p className="text-sm text-gray-500">
-                  {
-                    getAuthors().find((author) => author.id === blog.authorId)
-                      ?.Name
-                  }{" "}
-                  | {blog.createdDate}
-                </p>
+                  }`}
+                  className="flex"
+                >
+                  <p className="text-blue-400">
+                    {
+                      getAuthors().find((author) => author.id === blog.authorId)
+                        ?.Name
+                    }{" "}
+                  </p>
+                </Link>
+                -<p className="text-gray-600">{blog.createdDate}</p>
               </div>
             </Link>
           </div>
@@ -113,21 +110,35 @@ const Search = () => {
       </div>
       {filteredBlogs.length > blogsPerPage && (
         <div className="flex justify-center mt-4">
-          {Array.from({
-            length: Math.ceil(filteredBlogs.length / blogsPerPage),
-          }).map((_, index) => (
-            <button
-              key={index}
-              className={`mx-2 px-4 py-2 bg-indigo-500 text-white rounded ${
-                currentPage === index + 1 ? "bg-indigo-600" : ""
-              }`}
-              onClick={() => paginate(index + 1)}
-            >
-              {index + 1}
-            </button>
-          ))}
+          {/* Previous Button */}
+          <button
+            className={`px-4 py-2 bg-white text-black border border-gray-300 shadow-md rounded-l-md flex gap-1 items-center justify-center ${
+              currentPage === 1 ? "opacity-50" : ""
+            }`}
+            onClick={() => paginate(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            <i className="fa fa-chevron-left"></i>
+            Previous
+          </button>
+
+          {/* Next Button */}
+          <button
+            className={`px-4 py-2 bg-white text-black border border-gray-300 shadow-md rounded-r-md flex gap-1 items-center justify-center ${
+              currentPage === Math.ceil(filteredBlogs.length / blogsPerPage)
+                ? "opacity-50"
+                : ""
+            }`}
+            onClick={() => paginate(currentPage + 1)}
+            disabled={
+              currentPage === Math.ceil(filteredBlogs.length / blogsPerPage)
+            }
+          >
+            Next <i className="fa fa-chevron-right"></i>
+          </button>
         </div>
       )}
+
       {filteredBlogs.length > blogsPerPage && (
         <div className="flex justify-center mt-4">
           <Link to={`/search/all/${searchTerm}`} className="text-indigo-500">
