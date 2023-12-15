@@ -6,10 +6,10 @@ import { getBlogs } from "../blogData.js";
 
 const Home = ({ searchTerm }) => {
   const myStyle = {
-    fontFamily: 'Inter, sans-serif',
+    fontFamily: "Inter, sans-serif",
   };
-  
-  const pageSize = 10; 
+
+  const pageSize = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
   // Get filtered blogs based on the search term
@@ -70,14 +70,20 @@ const Home = ({ searchTerm }) => {
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {displayedBlogs.map((blog) => (
-          <div key={blog.id} className="bg-white p-4 rounded-lg shadow-md">
+          <div
+            key={blog.id}
+            className="bg-white p-2 pb-2.5 rounded-lg shadow-md"
+          >
             <Link to={`/blog/${blog.id}`}>
               <img
                 src={blog.image}
                 alt={blog.title}
-                className="mb-2 rounded-md h-32 w-full object-cover"
+                className="mb-2 rounded-md h-42 w-full object-cover"
               />
-              <p className="text-lg font-semibold text-gray-900 hover:underline line-clamp-3 text-ellipsis" style={myStyle}>
+              <p
+                className="text-lg font-semibold text-gray-900 hover:underline line-clamp-3 text-ellipsis"
+                style={myStyle}
+              >
                 {blog.title}
               </p>
               <div className="flex items-center mb-2">

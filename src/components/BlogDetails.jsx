@@ -7,7 +7,6 @@ import { getBlogById, getBlogs } from "../blogData.js";
 const BlogDetails = () => {
   const myStyle = {
     fontFamily: "Inter, sans-serif",
-    fontSize: "16px",
   };
 
   const { id } = useParams();
@@ -85,7 +84,7 @@ const BlogDetails = () => {
     <div>
       <div className="bg-white p-2">
         <h2
-          className="text-lg font-semibold text-gray-900 mb-2"
+          className="text-lg font-semibold text-gray-900 mb-2 md:text-2xl md:font-bold"
           style={myStyle}
         >
           {blog.title}
@@ -100,21 +99,21 @@ const BlogDetails = () => {
         <img
           src={blog.image}
           alt={blog.title}
-          className="mb-4 rounded-md max-h-52 w-full object-cover"
+          className="mb-4 rounded-md h-auto w-full object-cover"
         />
         <div className="flex items-center mb-2">
           {blog.categories.map((category, index) => (
             <Link
               key={index}
               to={`/category/${category}`}
-              className="text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded-full mr-2"
+              className="text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded-full mr-2 md:text-lg"
             >
               {category}
             </Link>
           ))}
         </div>
         <div
-          className="text-16px"
+          className="text-[16px] md:text-xl"
           style={myStyle}
           dangerouslySetInnerHTML={{ __html: blog.content }}
         />
@@ -153,7 +152,7 @@ const BlogDetails = () => {
               <Link
                 key={index}
                 to={`/tag/${tag}`}
-                className="py-1 px-2 text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded mr-2"
+                className="py-1 px-2 text-sm text-indigo-500 bg-gray-100 px-2 py-1 rounded mr-2 md:text-lg lg:text-xl"
               >
                 {tag}
               </Link>

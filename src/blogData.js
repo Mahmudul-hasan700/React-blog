@@ -669,16 +669,282 @@ header .navbar {
   },
   {
     id: 7,
-    title: "The Future of Mobile Apps",
+    title: "Build An AI Image Generator Website in HTML CSS and JavaScript.",
     content:
-      "Learn about the future of mobile apps using React Native in this blog post.",
+      `Websites like Midjourney and DALL-E have gained significant popularity in recent months or years for their ability to generate creative and imaginative images using AI. If you’re a beginner web developer, have you ever considered creating your own version of an AI image generator website? The great news is that with the help of only HTML, CSS, and JavaScript, you too can build a website like Midjourney or DALL-E.
+     <br><br>
+      If you’re unfamiliar, Midjourny and DALL-E are AI image-generation websites. They use a machine-learning model to create images based on text descriptions. Users can input their desired image prompt, and these websites will generate a corresponding image that matches the description.
+<br><br>
+      In this blog post, I will provide a step-by-step guide on how to build your own website for generating AI images using HTML, CSS, and JavaScript. The website will be built entirely from scratch using pure JavaScript. So, as a beginner, you can gain practical experience by applying your newly learned HTML, CSS, and JavaScript skills to real-world web projects.
+      <br><br>
+      On this custom AI image generation website, users enter their prompt, choose the number of images they want to generate, and click the “Generate” button. The AI will then create images based on the user prompt. To download each image, the user can click on the corresponding download button provided.
+
+
+      <br><br>
+      However, if you like reading blog posts or want a step-by-step guide for this project, you can continue reading this post. By the end of this post, you will have your own AI image generator website that you can showcase with your friends and include in your portfolio.
+
+      <br><br>
+      <h1 class="text-lg md:text-2xl font-semibold">
+Steps to Build AI Image Generator Website HTML & JavaScript
+</h1>
+  <br><br>  
+  To build an AI image generator website using HTML, CSS, and vanilla JavaScript, follow these simple step-by-step instructions:
+  <br><br>
+  <ul class="list-inside list-disc">
+  <li class="mt-2">To build an AI image generator website using HTML, CSS, and vanilla JavaScript, follow these simple step-by-step instructions:</li>
+
+  <li class="mt-2">Create a file called <code>index.html</code> to serve as the main file.</li>
+
+  <li class="mt-2">Create a file called <code>style.css</code> for the CSS code.</li>
+
+  <li class="mt-2">Create a file called <code>script.js</code> for the JavaScript code.</li>
+
+  <li class="mt-2">Finally, download the Images folder and put it in your project directory. This folder contains default showcase images for the website. You can also use your own images.</li>
+  </ul>
+  <br><br>
+  To start, add the following HTML codes to your <code>index.html</code> file. These codes include essential HTML markup with different semantic tags, such as div, form, input, button, image, etc., to build the website layout.
+  <br><br>
+  <pre class="language-css overflow-auto h-[500px]"><code class="language-css">
+/* Importing Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.image-generator {
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: url("images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.image-generator::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background: #121212;
+}
+
+.image-generator .content {
+  position: relative;
+  color: #fff;
+  padding: 0 15px;
+  max-width: 760px;
+  text-align: center;
+}
+
+.image-generator h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.image-generator p {
+  margin-top: 10px;
+  font-size: 1.35rem;
+}
+
+.image-generator .generate-form {
+  height: 56px;
+  padding: 6px;
+  display: flex;
+  margin-bottom: 15px;
+  background: #fff;
+  align-items: center;
+  border-radius: 30px;
+  margin-top: 45px;
+  justify-content: space-between;
+}
+
+.generate-form .prompt-input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  padding: 0 17px;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  border-radius: 30px;
+}
+
+.generate-form .controls {
+  display: flex;
+  height: 100%;
+  gap: 15px;
+}
+
+.generate-form .img-quantity {
+  outline: none;
+  border: none;
+  height: 44px;
+  background: none;
+  font-size: 1rem;
+}
+
+.generate-form .generate-btn {
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  height: 100%;
+  padding: 0 25px;
+  border-radius: 30px;
+  background: #4949E7;
+}
+
+.generate-form .generate-btn[disabled] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.generate-form button:hover {
+  background: #1d1de2;
+}
+
+.image-gallery {
+  display: flex;
+  gap: 15px;
+  padding: 0 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 50px auto;
+  max-width: 1250px;
+}
+
+.image-gallery .img-card {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background: #f2f2f2;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  width: 285px;
+}
+
+.image-gallery .img-card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.image-gallery .img-card.loading img {
+  width: 80px;
+  height: 80px;
+}
+
+.image-gallery .img-card .download-btn {
+  bottom: 15px;
+  right: 15px;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease;
+}
+
+.image-gallery .img-card .download-btn img {
+  width: 14px;
+  height: 14px;
+}
+
+.image-gallery .img-card:not(.loading):hover .download-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media screen and (max-width: 760px) {
+  .image-generator {
+    height: 45vh;
+    padding-top: 30px;
+    align-items: flex-start;
+  }
+
+  .image-generator h1 {
+    font-size: 1.8rem;
+  }
+
+  .image-generator p {
+    font-size: 1rem;
+  }
+
+  .image-generator .generate-form {
+    margin-top: 30px;
+    height: 52px;
+    display: block;
+  }
+
+  .generate-form .controls {
+    height: 40px;
+    margin-top: 15px;
+    justify-content: end;
+    align-items: center;
+  }
+
+  .generate-form .generate-btn[disabled] {
+    opacity: 1;
+  }
+
+  .generate-form .img-quantity {
+    color: #fff;
+  }
+
+  .generate-form .img-quantity option {
+    color: #000;
+  }
+
+  .image-gallery {
+    margin-top: 20px;
+  }
+
+  .image-gallery .img-card:not(.loading) .download-btn {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .image-gallery .img-card {
+    width: 100%;
+  }
+}
+</pre></code>
+<br><br>
+
+<br><br>
+<pre class="language-javascript overflow-auto h-[500px]"><code class="language-html">
+console.log('hello');
+</pre></code>
+
+<br><br>
+      `,
     image:
-      "https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75",
-    categories: ["Coding"],
-    categories: ["Coding"],
-    createdDate: "2023-12-13",
-    tags: ["Html-css-js", "Web Development", "React"],
-    authorId: 1,
+      "https://www.codingnepalweb.com/wp-content/uploads/2023/09/Build-An-AI-Image-Generator-Website-in-HTML-CSS-and-JavaScript.jpg",
+    categories: ["API Projects"],
+    createdDate: "2023-12-15",
+    tags: ["AI", "AI Image Generator", "AI Powered Image Generation", "Artificial Intelligence", "ChatGPT", " CSS, "],
+    authorId: 2,
   },
   {
     id: 8,
@@ -687,7 +953,6 @@ header .navbar {
       "Learn about the future of mobile apps using React Native in this blog post.",
     image:
       "https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75",
-    categories: ["Coding"],
     categories: ["Coding"],
     createdDate: "2023-12-13",
     tags: ["Html-css-js", "Web Development", "React"],
@@ -727,7 +992,6 @@ header .navbar {
     image:
       "https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75",
     categories: ["Coding"],
-    categories: ["Coding"],
     createdDate: "2023-12-13",
     tags: ["Html-css-js", "Web Development", "React"],
     authorId: 1,
@@ -740,7 +1004,6 @@ header .navbar {
     image:
       "https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75",
     categories: ["Coding"],
-    categories: ["Coding"],
     createdDate: "2023-12-13",
     tags: ["Html-css-js", "Web Development", "React"],
     authorId: 1,
@@ -752,7 +1015,6 @@ header .navbar {
       "Learn about the future of mobile apps using React Native in this blog post.",
     image:
       "https://notion-blog-wildcatco.vercel.app/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F0043b5f6-684a-4d28-a54b-9f4dec8bf091%252Fdog.webp%3Ftable%3Dblock%26id%3De0a6af26-cc40-4d91-8311-fc8dbe3963c0%26cache%3Dv2&w=2048&q=75",
-    categories: ["Coding"],
     categories: ["Coding"],
     createdDate: "2023-12-13",
     tags: ["Html-css-js", "Web Development", "React"],

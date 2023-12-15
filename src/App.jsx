@@ -30,9 +30,10 @@ const App = () => {
 
   return (
     <Router>
-      <div>
+      <div
+      >
         <Navbar onSearch={handleSearch} />
-        <div className="w-full container mx-auto p-4">
+        <div className="w-full p-4">
           <Routes>
             <Route path="/" element={<Home searchTerm={searchTerm} />} />
             <Route path="/blog/:id" element={<BlogDetails />} />
