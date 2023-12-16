@@ -72,48 +72,55 @@ const Home = ({ searchTerm }) => {
         {displayedBlogs.map((blog) => (
           <div
             key={blog.id}
-            className="bg-white p-2 pb-2.5 rounded-lg shadow-md"
+            className="bg-white p-2 pb-2.5 rounded-lg md:shadow-md"
           >
-            <Link to={`/blog/${blog.id}`}>
-              <img
-                src={blog.image}
-                alt={blog.title}
-                className="mb-2 rounded-md h-42 w-full object-cover"
-              />
-              <p
-                className="text-lg font-semibold text-gray-900 hover:underline line-clamp-3 text-ellipsis"
-                style={myStyle}
-              >
-                {blog.title}
-              </p>
-              <div className="flex items-center mb-2">
-                {blog.categories.map((category, index) => (
-                  <Link
-                    key={index}
-                    to={`/category/${category}`} // Link to the category page
-                    className="text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded-full mr-2"
-                  >
-                    {category}
-                  </Link>
-                ))}
+            <Link
+              to={`/blog/${blog.id}`}
+              className="flex cursor-default md:flex md:flex-col md:gap-4 md:p-4 md:text-base grid grid-cols-[150px,1fr] gap-2"
+            >
+              <div className="md:w-full md:overflow-hidden md:rounded-md w-[150px] rounded-md">
+                <img
+                  src={blog.image}
+                  alt={blog.title}
+                  className="cursor-pointer md:w-full md:h-auto w-full h-auto rounded-md"
+                />
               </div>
-              <div className="flex items-center mb-2 gap-1">
-                By
-                <Link
-                  to={`/author/${
-                    getAuthors().find((author) => author.id === blog.authorId)
-                      ?.Name
-                  }`}
-                  className="flex ml-1"
+              <div className="flex-1">
+                <p
+                  className="text-lg font-semibold text-gray-900 hover:underline line-clamp-2 md:line-clamp-3 text-ellipsis"
+                  style={myStyle}
                 >
-                  <p className="text-blue-400">
-                    {
+                  {blog.title}
+                </p>
+                <div className="flex items-center mb-2 hidden md:block">
+                  {blog.categories.map((category, index) => (
+                    <Link
+                      key={index}
+                      to={`/category/${category}`} // Link to the category page
+                      className="text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded-full mr-2"
+                    >
+                      {category}
+                    </Link>
+                  ))}
+                </div>
+                <div className="flex items-center mb-2 gap-1">
+                  <Link
+                    to={`/author/${
                       getAuthors().find((author) => author.id === blog.authorId)
                         ?.Name
-                    }{" "}
-                  </p>
-                </Link>
-                -<p className="text-gray-600">{blog.createdDate}</p>
+                    }`}
+                    className="flex"
+                  >
+                    <p className="text-blue-400 font-medium">
+                      {
+                        getAuthors().find(
+                          (author) => author.id === blog.authorId,
+                        )?.Name
+                      }{" "}
+                    </p>
+                  </Link>
+                  -<p className="text-gray-600 text-[14px]">{blog.createdDate}</p>
+                </div>
               </div>
             </Link>
           </div>

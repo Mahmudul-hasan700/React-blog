@@ -451,9 +451,6 @@ pre {
 
 .absolute{
   position: absolute;
-top: 0;
-  right: 0;
-  bottom: 0;
 }
 
 .hamburger svg>*:nth-child(1),

@@ -33,7 +33,7 @@ const BlogDetails = () => {
           </Link>
         </div>
         {/* Display other blogs in grid style */}
-        <p className="text-center text-gray-500 text-lg md:text:xl font-medium">
+        <p className="text-center text-gray-900 text-lg md:text:xl font-medium">
           OUR LATEST POSTS
         </p>
         <div className="mt-10 grid grid-cols-1 gap-2 md:grid-cols-2">
@@ -41,16 +41,15 @@ const BlogDetails = () => {
             <div key={otherBlog.id} className="flex details mb-4">
               <Link
                 to={`/blogs/${otherBlog.id}`}
-                className="flex cursor-default"
-              >
-                <div className="thumbnail">
+                className="flex cursor-default md:flex md:flex-col md:gap-4 md:rounded-md md:shadow-md md:p-4 md:text-base grid grid-cols-[150px,1fr] gap-2">
+                <div className="md:w-full md:overflow-hidden md:rounded-md w-[150px]">
                   <img
-                    className="mr-2 max-w-md h-24 cursor-pointer"
+                    className="cursor-pointer md:w-full md:h-auto w-full h-auto"
                     src={otherBlog.image}
                     alt={otherBlog.title}
                   />
                 </div>
-                <div className="title ml-4">
+                <div className="flex-1">
                   <h2 className="text-xl font-semibold line-clamp-2 cursor-pointer">
                     {otherBlog.title}
                   </h2>
