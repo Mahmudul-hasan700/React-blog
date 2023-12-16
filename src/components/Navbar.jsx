@@ -1,17 +1,17 @@
 // src/components/Navbar.js
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
   };
 
   const handleSearchClick = () => {
-    // Navigate to the search page when the search button is clicked
     navigate("/search");
   };
 
@@ -23,49 +23,58 @@ const Navbar = () => {
           isNavOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <Link to="/" className="ml-2">
+          <NavLink to="/" end className="ml-2">
           <img
             src="https://stablo-template.vercel.app/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fcijrdavx%2Fproduction%2Fe8fa4f57a95067e838d7aa5a4f80042137d9f5b6-132x52.svg%3Fw%3D132%26auto%3Dformat&w=1080&q=75"
             alt="Logo"
             className="h-8"
           />
-        </Link>
+        </NavLink>
 
         <ul className="mt-4">
           <li className="nav-item">
-            <Link
+            <NavLink
               to="/"
-              className="py-2 mt-2 flex items-center gap-2 text-black bg-slate-200 px-2 font-semibold rounded-md"
+              end
+              className={`py-2 mt-2 flex items-center gap-2 text-black px-2 font-semibold rounded-md ${
+                location.pathname === "/"
+                  ? "nav-active"
+                  : "hover:bg-slate-200 hover:text-slate-900"
+              }`}
             >
+              <i className="fa-solid fa-house"></i>
               Home
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link
+            <NavLink
               to="/about"
-              className="py-2 mt-2 flex items-center gap-2 text-black hover:bg-slate-200 hover:text-slate-900 px-2 font-semibold rounded-md"
+              end
+              className={`py-2 mt-2 flex items-center gap-2 text-black px-2 font-semibold rounded-md ${
+                location.pathname === "/about"
+                  ? "nav-active"
+                  : "hover:bg-slate-200 hover:text-slate-900"
+              }`}
             >
+              <i className="fa-solid fa-circle-exclamation"></i>
               About
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link
+            <NavLink
               to="/contact"
-              className="py-2 mt-2 flex items-center gap-2 text-black hover:bg-slate-200 hover:text-slate-900 px-2 font-semibold rounded-md"
+              end
+              className={`py-2 mt-2 flex items-center gap-2 text-black px-2 font-semibold rounded-md ${
+                location.pathname === "/contact"
+                  ? "nav-active"
+                  : "hover:bg-slate-200 hover:text-slate-900"
+              }`}
             >
+              <i className="fa-solid fa-comment-dots"></i>
               Contact
-            </Link>
-          </li>
-
-          <li>
-            <Link
-              to="/Blog"
-              className="py-2 mt-2 flex items-center gap-2 text-black hover:bg-slate-200 hover:text-slate-900 px-2 font-semibold rounded-md"
-            >
-              Blog
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>
@@ -73,13 +82,13 @@ const Navbar = () => {
       <div className="flex-1 flex flex-col overflow-hidden">
         <header className="bg-white border-b border-gray-300 h-20 p-4 flex items-center justify-between">
           <div className="flex items-center justify-center">
-            <Link to="/" className="ml-2">
+              <NavLink to="/" end className="ml-2">
               <img
                 src="https://www.codingnepalweb.com/wp-content/uploads/2023/01/codingnepal-navbar-logo-544x180-blue-transparent.png"
                 alt="Logo"
                 className="h-10"
               />
-            </Link>
+            </NavLink>
           </div>
           <div className="gap-3">
             <button
