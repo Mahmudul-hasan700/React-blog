@@ -1,4 +1,3 @@
-// AllSearchResults.jsx
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getAuthors } from "../Authors.js";
@@ -6,14 +5,14 @@ import { getBlogs } from "../blogData.js";
 
 const AllSearchResults = () => {
   const myStyle = {
-    fontFamily: 'Inter, sans-serif',
+    fontFamily: "Inter, sans-serif",
   };
-  
+
   const { term } = useParams();
   const [searchTerm, setSearchTerm] = useState(term);
   const [allBlogs, setAllBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const blogsPerPage = 7;
+  const blogsPerPage = 5;
 
   useEffect(() => {
     const filteredBlogs = getBlogs().filter((blog) =>
@@ -84,19 +83,31 @@ const AllSearchResults = () => {
       </div>
       {allBlogs.length > blogsPerPage && (
         <div className="flex justify-center mt-4">
-          {Array.from({
-            length: Math.ceil(allBlogs.length / blogsPerPage),
-          }).map((_, index) => (
-            <button
-              key={index}
-              className={`mx-2 px-4 py-2 bg-indigo-500 text-white rounded ${
-                currentPage === index + 1 ? "bg-indigo-600" : ""
-              }`}
-              onClick={() => paginate(index + 1)}
-            >
-              {index + 1}
-            </button>
-          ))}
+          {/* Previous Button */}
+          <button
+            className={`px-4 py-2 bg-white text-black border border-gray-300 shadow-md rounded-l-md flex gap-1 items-center justify-center ${
+              currentPage === 1 ? "opacity-50" : ""
+            }`}
+            onClick={() => paginate(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            {" "}
+            <i className="fa fa-chevron-left"></i>
+            Previous
+          </button>
+
+          {/* Next Button */}
+          <button
+            className={`px-4 py-2 bg-white text-black border border-gray-300 shadow-md rounded-r-md flex gap-1 items-center justify-center ${
+              currentPage === Math.ceil(allBlogs.length / blogsPerPage)
+                ? "opacity-50"
+                : ""
+            }`}
+            onClick={() => paginate(currentPage + 1)}
+            disabled={currentPage === Math.ceil(allBlogs.length / blogsPerPage)}
+          >
+            Next <i className="fa fa-chevron-right"></i>
+          </button>
         </div>
       )}
     </div>

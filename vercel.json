@@ -1,0 +1,15 @@
+{
+  "rewrites": [
+    { "source": "/blog/:slug*", "destination": "/index.html" },
+    { "source": "/category/:category", "destination": "/index.html" },
+    { "source": "/tag/:tag", "destination": "/index.html" },
+    { "source": "/search/all/:term", "destination": "/index.html" },
+    { "source": "/search", "destination": "/index.html" },
+    { "source": "/about", "destination": "/index.html" },
+    { "source": "/contact", "destination": "/index.html" },
+    { "source": "/privacy-policy", "destination": "/index.html" },
+    { "source": "/terms-conditions", "destination": "/index.html" },
+    { "source": "/author/:authorName", "destination": "/index.html" },
+    { "source": "/:path*", "destination": "/index.html" }
+  ]
+}

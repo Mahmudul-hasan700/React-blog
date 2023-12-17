@@ -1,33 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
+.nav-active {
+  background-color: #5182b8;
+  color: #fff;
+  border-radius: 4px;
+}
+
 .code-container {
   position: relative;
   border-radius: 5px;
-}
-
-.copy-button {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  cursor: pointer;
-  border-radius: 3px;
-}
-
-pre {
-  background: #eee;
-  padding: 1rem;
-  overflow: auto;
-  border-radius: 3px;
-  max-width: 80ch;
-}
-
-pre code {
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    line-height: 1.5;
 }
 
 @font-face {
@@ -410,50 +391,11 @@ pre code {
 
 body {            
     font-family: 'Inter', sans-serif;
-    user-select: none;
 }
 
 #sideNav {
   transition: transform 0.3s ease-in-out;
   z-index: 999;
-}
-
-.code-block {
-  position: relative;
-}
-
-.copy-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  padding: 5px 10px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-code,
-kbd,
-samp,
-pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-feature-settings: normal;
-  font-variation-settings: normal;
-  font-size: 1em;
-  padding: 2px 4px;
-  background-color: #f1f1f1;
-}
-
-.relative{
-  position: relatice; 
-}
-
-.absolute{
-  position: absolute;
-top: 0;
-  right: 0;
-  bottom: 0;
 }
 
 .hamburger svg>*:nth-child(1),
