@@ -1,19 +1,14 @@
-// src/components/BlogDetails.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getAuthors } from "../Authors.js";
-import { getBlogById, getBlogs } from "../blogData.js";
+import { getBlogByTitle, getBlogs } from "../blogData.js";
 import hljs from "highlight.js";
 import "highlight.js/styles/default.css";
 
 const BlogDetails = () => {
-  const myStyle = {
-    fontFamily: "Inter, sans-serif",
-  };
-
-  const { id } = useParams();
-  const blog = getBlogById(id);
+  const { title } = useParams();
   const allBlogs = getBlogs();
+  const blog = getBlogByTitle(title);
 
   if (!blog) {
     return (
@@ -26,13 +21,10 @@ const BlogDetails = () => {
           <Link
             to="/"
             className="mt-[50px] p-2 px-3 rounded md:text-lg text-slate-100 bg-black"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             HOMEPAGE
           </Link>
         </div>
-        {/* Display other blogs in grid style */}
         <p className="text-center text-gray-900 text-lg md:text:xl font-medium">
           OUR LATEST POSTS
         </p>
@@ -40,8 +32,11 @@ const BlogDetails = () => {
           {allBlogs.slice(0, 5).map((otherBlog) => (
             <div key={otherBlog.id} className="flex details mb-4">
               <Link
-                to={`/blogs/${otherBlog.id}`}
-                className="flex cursor-default md:flex md:flex-col md:gap-4 md:rounded-md md:shadow-md md:p-4 md:text-base grid grid-cols-[150px,1fr] gap-2">
+                to={`/blog/${otherBlog.title
+                  .replace(/\s+/g, "-")
+                  .toLowerCase()}`}
+                className="flex cursor-default md:flex md:flex-col md:gap-4 md:rounded-md md:shadow-md md:p-4 md:text-base grid grid-cols-[150px,1fr] gap-2"
+              >
                 <div className="md:w-full md:overflow-hidden md:rounded-md w-[150px]">
                   <img
                     className="cursor-pointer md:w-full md:h-auto w-full h-auto"
@@ -80,7 +75,7 @@ const BlogDetails = () => {
     );
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     const codeContainers = document.querySelectorAll(".code-container");
 
     codeContainers.forEach((container) => {
@@ -103,7 +98,7 @@ const BlogDetails = () => {
 
       container.appendChild(copyButton);
     });
-  }, []);
+  }, [blog]);
 
   const shareOnTwitter = () => {
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
@@ -149,7 +144,6 @@ const BlogDetails = () => {
       <div className="bg-white p-2">
         <h2
           className="text-lg font-semibold text-gray-900 mb-2 md:text-2xl md:font-bold"
-          style={myStyle}
         >
           {blog.title}
         </h2>
@@ -177,7 +171,7 @@ const BlogDetails = () => {
             <Link
               key={index}
               to={`/category/${category}`}
-              className="text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded-full mr-2 md:text-lg"
+              className="text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded-full mr-2"
             >
               {category}
             </Link>
@@ -185,14 +179,13 @@ const BlogDetails = () => {
         </div>
         <div
           className="text-[16px] md:text-xl"
-          style={myStyle}
           dangerouslySetInnerHTML={{ __html: blog.content }}
         />
       </div>
 
       <div className="mt-8 flex items-center justify-center w-full">
         <Link to="/">
-          <button className="bg-transparent  text-indigo-500 font-semibold py-2 px-4 rounded flex items-center justify-center gap-1 hover:underline">
+          <button className="bg-transparent text-indigo-500 font-semibold py-2 px-4 rounded flex items-center justify-center gap-1 hover:underline">
             <i className="fas fa-arrow-left"></i>
             View all posts
           </button>
@@ -209,7 +202,7 @@ const BlogDetails = () => {
               <Link
                 key={index}
                 to={`/tag/${tag}`}
-                className="py-1 px-2 text-sm text-indigo-500 bg-gray-100 px-2 py-1 rounded mr-2 md:text-lg lg:text-xl"
+                className="py-1 px-2 text-sm text-indigo-500 bg-gray-100 px-2 py-1 rounded mr-2"
               >
                 {tag}
               </Link>
@@ -247,10 +240,10 @@ const BlogDetails = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {allBlogs.slice(0, 5).map((relatedBlog) => (
           <div
-            key={relatedBlog.id}
+            key={relatedBlog.title}
             className="bg-white p-4 rounded-lg shadow-md"
           >
-            <Link to={`/blog/${relatedBlog.id}`}>
+            <Link to={`/blog/${relatedBlog.title}`}>
               <img
                 src={relatedBlog.image}
                 alt={relatedBlog.title}

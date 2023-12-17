@@ -968,9 +968,13 @@ console.log('hello');
 
 export const getBlogs = () =>
   blogs.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
-export const getBlogById = (id) => blogs.find((blog) => blog.id === Number(id));
+
+export const getBlogByTitle = (title) => {
+  return blogs.find((blog) => blog.title.toLowerCase() === title.toLowerCase());
+};
+
 export const getRecentBlogs = (limit) => blogs.slice(0, limit);
+
 export const getOlderBlogs = (limit) => blogs.slice(-limit);
-export const getAuthors = () => authors;
 
 export default blogs;

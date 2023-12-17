@@ -13,7 +13,7 @@ const BlogList = ({ filteredBlogs }) => (
         <Link to={`/blog/${blog.title}`}>
           <img
             src={blog.image}
-            alt={blog.title}
+            alt={`Thumbnail for ${blog.title}`}
             className="mb-4 rounded-md h-40 w-full object-cover"
           />
           <p className="text-lg font-semibold text-gray-900 hover:underline mb-2 line-clamp-3 text-ellipsis">
@@ -22,33 +22,38 @@ const BlogList = ({ filteredBlogs }) => (
         </Link>
 
         {/* Displaying category */}
-        <div className="flex items-center mb-2">
-          {blog.categories.map((category, index) => (
-            <span
-              key={index}
-              className="text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded-full mr-2"
-            >
-              {category}
-            </span>
-          ))}
-        </div>
+        {blog.categories && blog.categories.length > 0 && (
+          <div className="flex items-center mb-2">
+            {blog.categories.map((category, index) => (
+              <span
+                key={index}
+                className="text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded-full mr-2"
+              >
+                {category}
+              </span>
+            ))}
+          </div>
+        )}
 
         {/* Displaying author information */}
-        <div className="flex items-center">
-          <img
-            src={
-              getAuthors().find((author) => author.id === blog.authorId)?.image
-            }
-            alt={
-              getAuthors().find((author) => author.id === blog.authorId)?.Name
-            }
-            className="w-8 h-8 rounded-full mr-2"
-          />
-          <p className="text-sm text-gray-500">
-            {getAuthors().find((author) => author.id === blog.authorId)?.Name} |{" "}
-            {blog.createdDate}
-          </p>
-        </div>
+        {blog.authorId && (
+          <div className="flex items-center">
+            <img
+              src={
+                getAuthors().find((author) => author.id === blog.authorId)
+                  ?.image
+              }
+              alt={
+                getAuthors().find((author) => author.id === blog.authorId)?.Name
+              }
+              className="w-8 h-8 rounded-full mr-2"
+            />
+            <p className="text-sm text-gray-500">
+              {getAuthors().find((author) => author.id === blog.authorId)?.Name}{" "}
+              | {blog.createdDate}
+            </p>
+          </div>
+        )}
       </div>
     ))}
   </div>

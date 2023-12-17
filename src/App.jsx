@@ -7,7 +7,7 @@ import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
 import Home from "./components/Home.jsx";
 import BlogDetails from "./components/BlogDetails.jsx";
-import { getBlogById, getBlogs } from "./blogData.js";
+import { getBlogByTitle, getBlogs } from "./blogData.jsx";
 import Search from "./components/Search.jsx";
 import CategoryPage from "./components/CategoryPage.jsx";
 import TagPage from "./components/TagPage.jsx";
@@ -38,7 +38,7 @@ const App = () => {
         <div className="w-full p-4">
           <Routes>
             <Route path="/" element={<Home searchTerm={searchTerm} />} />
-            <Route path="/blog/:id" element={<BlogDetails />} />
+            <Route path="/blog/:title" element={<BlogDetails searchTerm={searchTerm} />} />
             <Route path="/category/:category" element={<CategoryPage />} />
             <Route path="/tag/:tag" element={<TagPage />} />
             <Route path="/search/all/:term" element={<AllSearchResults />} />
@@ -51,7 +51,7 @@ const App = () => {
           </Routes>
         </div>
         <Footer />
-      </div>
+      </div> 
     </Router>
   );
 };

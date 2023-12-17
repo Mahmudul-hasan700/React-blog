@@ -1,50 +1,39 @@
-// src/components/Home.jsx
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuthors } from "../Authors.js";
 import { getBlogs } from "../blogData.js";
 
 const Home = ({ searchTerm }) => {
-  const myStyle = {
-    fontFamily: "Inter, sans-serif",
-  };
-
-  const pageSize = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Get filtered blogs based on the search term
+  const pageSize = 10;
+
   const filteredBlogs = getBlogs().filter((blog) =>
     blog.title.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
-  // Calculate the start and end index of blogs for the current page
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
   const displayedBlogs = filteredBlogs.slice(startIndex, endIndex);
 
-  // Calculate the total number of pages
   const totalPages = Math.ceil(filteredBlogs.length / pageSize);
 
-  // Function to handle page change
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
-  // Function to handle next page
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
   };
 
-  // Function to handle previous page
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
 
-  // Function to count the number of blogs per category
   const countBlogsPerCategory = () => {
     const blogCountPerCategory = {};
 
@@ -65,7 +54,7 @@ const Home = ({ searchTerm }) => {
 
   return (
     <div className="w-full">
-      <h2 className="text-2xl font-semibold mb-4 text-center" style={myStyle}>
+      <h2 className="text-2xl font-semibold mb-4 text-center">
         LATEST ARTICLES
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -75,7 +64,8 @@ const Home = ({ searchTerm }) => {
             className="bg-white p-2 pb-2.5 rounded-lg md:shadow-md"
           >
             <Link
-              to={`/blog/${blog.id}`}
+              key={blog.id}
+              to={`/blog/${blog.title.replace(/\s+/g, "-").toLowerCase()}`}
               className="flex cursor-default md:flex md:flex-col md:gap-4 md:p-4 md:text-base grid grid-cols-[150px,1fr] gap-2"
             >
               <div className="md:w-full md:overflow-hidden md:rounded-md w-[150px] rounded-md">
@@ -86,17 +76,14 @@ const Home = ({ searchTerm }) => {
                 />
               </div>
               <div className="flex-1">
-                <p
-                  className="text-lg font-semibold text-gray-900 hover:underline line-clamp-2 md:line-clamp-3 text-ellipsis"
-                  style={myStyle}
-                >
+                <p className="text-lg font-semibold text-gray-900 hover:underline line-clamp-2 md:line-clamp-3 text-ellipsis">
                   {blog.title}
                 </p>
                 <div className="flex items-center mb-2 hidden md:block">
                   {blog.categories.map((category, index) => (
                     <Link
                       key={index}
-                      to={`/category/${category}`} // Link to the category page
+                      to={`/category/${category}`}
                       className="text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded-full mr-2"
                     >
                       {category}
@@ -119,7 +106,10 @@ const Home = ({ searchTerm }) => {
                       }{" "}
                     </p>
                   </Link>
-                  -<p className="text-gray-600 text-[14px]">{blog.createdDate}</p>
+                  -
+                  <p className="text-gray-600 text-[14px]">
+                    {blog.createdDate}
+                  </p>
                 </div>
               </div>
             </Link>
@@ -127,7 +117,6 @@ const Home = ({ searchTerm }) => {
         ))}
       </div>
 
-      {/* Pagination */}
       <div className="flex items-center justify-center mt-4">
         <button
           onClick={handlePrevPage}
@@ -137,6 +126,7 @@ const Home = ({ searchTerm }) => {
               : "bg-[#4db1eb] text-white border-none"
           }`}
           disabled={currentPage === 1}
+          aria-label="Go to Previous Page"
         >
           {" "}
           <i className=" fas fa-arrow-left"></i> Previous
@@ -150,6 +140,7 @@ const Home = ({ searchTerm }) => {
                 ? "bg-[#4db1eb] text-white border-none"
                 : "bg-gray-200 text-gray-700"
             }`}
+            aria-label={`Go to Page ${index + 1}`}
           >
             {index + 1}
           </button>
@@ -162,12 +153,12 @@ const Home = ({ searchTerm }) => {
               : "bg-[#4db1eb] text-white border-none"
           }`}
           disabled={currentPage === totalPages}
+          aria-label="Go to Next Page"
         >
           Next <i className="fas fa-arrow-right"></i>
         </button>
       </div>
 
-      {/* Category List */}
       <div className="mt-8 w-full">
         <h2 className="text-2xl font-semibold mb-4 text-center font-inter">
           CATEGORIES

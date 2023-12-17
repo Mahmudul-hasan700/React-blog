@@ -28,6 +28,7 @@
     "@tailwindcss/typography": "^0.5.10",
     "express": "^4.18.2",
     "highlight.js": "^11.9.0",
+    "mongodb": "^6.3.0",
     "nodejs": "^0.0.0",
     "prismjs": "^1.29.0",
     "react-copy-to-clipboard": "^5.1.0",

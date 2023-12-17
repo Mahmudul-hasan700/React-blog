@@ -21,7 +21,10 @@ const AuthorPage = () => {
       <div className="mt-10 grid grid-cols-1 gap-2 md:grid-cols-2">
         {currentBlogs.map((blog) => (
           <div key={blog.id} className="flex details mb-4">
-            <Link to={`/blogs/${blog.id}`} className="flex cursor-pointer">
+            <Link
+              to={`/blog/${blog.title.replace(/\s+/g, "-").toLowerCase()}`}
+              className="flex cursor-pointer"
+            >
               <div className="thumbnail">
                 <img
                   className="mr-2 max-w-md h-24 cursor-pointer"
@@ -92,7 +95,8 @@ const AuthorPage = () => {
       <div>
         <div className="blog-section">
           <h2 className="text-2xl font-semibold mb-4 text-center">
-            Blog Posts by <span className="text-blue-500 font-semibold">{author.Name}</span>
+            Blog Posts by{" "}
+            <span className="text-blue-500 font-semibold">{author.Name}</span>
           </h2>
           <BlogGrid authorId={author.id} />
         </div>
@@ -110,7 +114,7 @@ const AuthorPage = () => {
             onClick={() => paginate(currentPage - 1)}
             disabled={currentPage === 1}
           >
-            <i className="fa-solid fa-chevron-left"></i>Previous
+            <i className="fa fa-chevron-left"></i>Previous
           </button>
 
           {/* Next Button */}

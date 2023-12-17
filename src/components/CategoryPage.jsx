@@ -35,8 +35,8 @@ const CategoryPage = () => {
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {blogsInCategory.map((blog) => (
-          <div key={blog.id} className="bg-white p-4 rounded-lg shadow-md">
-            <Link to={`/blog/${blog.id}`}>
+          <div key={blog.title} className="bg-white p-4 rounded-lg shadow-md">
+            <Link to={`/blog/${blog.title.replace(/\s+/g, "-").toLowerCase()}`}>
               <img
                 src={blog.image}
                 alt={blog.title}

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { getBlogs } from "../blogData.js";
 import { getAuthors } from "../Authors.js";
-import AllSearchResults from "./AllSearchResults.jsx";
 
 const Search = () => {
   const navigate = useNavigate();
@@ -29,7 +28,7 @@ const Search = () => {
     }
 
     const filteredBlogs = getBlogs().filter((blog) =>
-      blog.title.toLowerCase().includes(searchTerm.toLowerCase()),
+      blog.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     setFilteredBlogs(filteredBlogs);
@@ -70,7 +69,7 @@ const Search = () => {
             className="bg-white p-4 md:rounded-lg md:shadow-md"
           >
             <Link
-              to={`/blog/${blog.id}`}
+              to={`/blog/${blog.title.replace(/\s+/g, "-").toLowerCase()}`}
               className="flex cursor-default md:flex md:flex-col md:gap-4 md:p-4 md:text-base grid grid-cols-[150px,1fr] gap-2"
             >
               <div className="md:w-full md:overflow-hidden md:rounded-md w-[150px] rounded-md">
@@ -106,7 +105,7 @@ const Search = () => {
                     <p className="text-blue-400">
                       {
                         getAuthors().find(
-                          (author) => author.id === blog.authorId,
+                          (author) => author.id === blog.authorId
                         )?.Name
                       }{" "}
                     </p>

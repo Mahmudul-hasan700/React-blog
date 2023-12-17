@@ -37,7 +37,7 @@ const AllSearchResults = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
         {currentBlogs.map((blog) => (
           <div key={blog.id} className="bg-white p-4 rounded-lg shadow-md">
-            <Link to={`/blog/${blog.id}`}>
+            <Link to={`/blog/${blog.title.replace(/\s+/g, "-").toLowerCase()}`}>
               <img
                 src={blog.image}
                 alt={blog.title}

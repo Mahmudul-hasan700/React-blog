@@ -1,23 +1,22 @@
-// src/components/TagPage.jsx
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { getBlogs } from "../blogData.js";
 
 const TagPage = () => {
   const { tag } = useParams();
-  const blogsWithTag = getBlogs().filter((blog) =>
-    blog.tags && blog.tags.includes(tag)
+  const blogsWithTag = getBlogs().filter(
+    (blog) => blog.tags && blog.tags.includes(tag),
   );
 
   return (
     <div>
-      <h2 className="text-2xl font-semibold mb-4 text-center font-inter">
-        Blogs with Tag: {tag}
+      <h2 className="text-2xl font-semibold mb-4 text-center font-inter uppercase">
+        {tag}
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {blogsWithTag.map((blog) => (
           <div key={blog.id} className="bg-white p-4 rounded-lg shadow-md">
-            <Link to={`/blog/${blog.id}`}>
+            <Link to={`/blog/${blog.title.replace(/\s+/g, "-").toLowerCase()}`}>
               <img
                 src={blog.image}
                 alt={blog.title}
