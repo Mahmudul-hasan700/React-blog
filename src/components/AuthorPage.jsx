@@ -8,10 +8,12 @@ const AuthorPage = () => {
   const author = getAuthors().find((author) => author.Name === authorName);
   const allBlogs = getBlogs(); // Retrieve the list of blogs
 
-  const BlogGrid = ({ authorId }) => {
-    // Filter blogs based on author's id
-    const authorBlogs = allBlogs.filter((blog) => blog.authorId === authorId);
+  // Filter blogs based on author's id
+  const authorBlogs = allBlogs.filter((blog) =>
+    author ? blog.authorId === author.id : false,
+  );
 
+  const BlogGrid = () => {
     // Pagination logic
     const indexOfLastBlog = currentPage * blogsPerPage;
     const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
@@ -36,15 +38,16 @@ const AuthorPage = () => {
                 <div className="flex">
                   <Link
                     to={`/author/${
-                      getAuthors().find(
-                        (author) => author.id === blog.authorId
-                      )?.Name
+                      getAuthors().find((author) => author.id === blog.authorId)
+                        ?.Name
                     }`}
                   >
                     <p className="text-blue-400 font-medium">
-                      {getAuthors()
-                        .find((author) => author.id === blog.authorId)
-                        ?.Name}
+                      {
+                        getAuthors().find(
+                          (author) => author.id === blog.authorId,
+                        )?.Name
+                      }
                     </p>
                   </Link>
                   <p className="text-gray-600">- {blog.createdDate}</p>
@@ -58,7 +61,7 @@ const AuthorPage = () => {
   };
 
   const [currentPage, setCurrentPage] = useState(1);
-  const blogsPerPage = 2;
+  const blogsPerPage = 5; // Show 5 blogs per page
 
   useEffect(() => {
     setCurrentPage(1); // Reset current page when author changes
@@ -88,24 +91,24 @@ const AuthorPage = () => {
         <p className="text-gray-600 mb-8">{author.bio}</p>
       </div>
 
-      {/* Display blog posts or additional information about the author */}
+      {/* Display the first page of blog posts */}
       <div>
         <div className="blog-section">
           <h2 className="text-2xl font-semibold mb-4 text-center">
-            Blog Posts by <span className="text-blue-500 font-semibold">{author.Name}</span>
+            Blog Posts by{" "}
+            <span className="text-blue-500 font-semibold">{author.Name}</span>
           </h2>
-          <BlogGrid authorId={author.id} />
+          <BlogGrid />
         </div>
       </div>
 
       {/* Pagination */}
-      {allBlogs.filter((blog) => blog.authorName === author.Name).length >
-        blogsPerPage && (
+      {authorBlogs.length > blogsPerPage && (
         <div className="flex justify-center mt-4">
           {/* Previous Button */}
           <button
-            className={`px-4 py-2 bg-white text-black border border-gray-300 shadow-md rounded-l-md flex gap-1 items-center justify-center ${
-              currentPage === 1 ? "opacity-50" : ""
+            className={`px-4 py-2 bg-white text-black border border-gray-300 rounded-l-md flex gap-1 items-center justify-center ${
+              currentPage === 1 ? "opacity-50 shadow-sm" : "shadow-md"
             }`}
             onClick={() => paginate(currentPage - 1)}
             disabled={currentPage === 1}
@@ -113,13 +116,14 @@ const AuthorPage = () => {
             <i className="fa-solid fa-chevron-left"></i>Previous
           </button>
 
-          {/* Next Button */}
           <button
-            className={`px-4 py-2 bg-white text-black border border-gray-300 shadow-md rounded-r-md flex gap-1 items-center justify-center ${
-              currentBlogs.length < blogsPerPage ? "opacity-50" : ""
+            className={`px-4 py-2 bg-white text-black border border-gray-300 rounded-r-md flex gap-1 items-center justify-center ${
+              currentPage * blogsPerPage >= authorBlogs.length
+                ? "opacity-50 shadow-sm"
+                : "shadow-md"
             }`}
             onClick={() => paginate(currentPage + 1)}
-            disabled={currentBlogs.length < blogsPerPage}
+            disabled={currentPage * blogsPerPage >= authorBlogs.length}
           >
             Next <i className="fas fa-chevron-right"></i>
           </button>

@@ -18,6 +18,7 @@ import AuthorPage from "./components/AuthorPage.jsx"; // Import the new componen
 import "./App.css";
 import "./index.css";
 import "./styles/App.css";
+import "./styles/prism.css";
 
 const App = () => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);

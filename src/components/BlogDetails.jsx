@@ -41,7 +41,8 @@ const BlogDetails = () => {
             <div key={otherBlog.id} className="flex details mb-4">
               <Link
                 to={`/blogs/${otherBlog.id}`}
-                className="flex cursor-default md:flex md:flex-col md:gap-4 md:rounded-md md:shadow-md md:p-4 md:text-base grid grid-cols-[150px,1fr] gap-2">
+                className="flex cursor-default md:flex md:flex-col md:gap-4 md:rounded-md md:shadow-md md:p-4 md:text-base grid grid-cols-[150px,1fr] gap-2"
+              >
                 <div className="md:w-full md:overflow-hidden md:rounded-md w-[150px]">
                   <img
                     className="cursor-pointer md:w-full md:h-auto w-full h-auto"
@@ -85,23 +86,7 @@ const BlogDetails = () => {
 
     codeContainers.forEach((container) => {
       const codeElement = container.querySelector("code");
-
-      hljs.highlightBlock(codeElement);
-
-      const copyButton = document.createElement("button");
-      copyButton.className = "copy-button";
-      copyButton.textContent = "Copy";
-      copyButton.addEventListener("click", () => {
-        const textArea = document.createElement("textarea");
-        textArea.value = codeElement.textContent;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand("copy");
-        document.body.removeChild(textArea);
-        copyButton.textContent = "Copied!";
-      });
-
-      container.appendChild(copyButton);
+      Prism.highlightElement(codeElement);
     });
   }, []);
 
@@ -248,45 +233,52 @@ const BlogDetails = () => {
         {allBlogs.slice(0, 5).map((relatedBlog) => (
           <div
             key={relatedBlog.id}
-            className="bg-white p-4 rounded-lg shadow-md"
+            className="bg-white p-2 pb-2.5 rounded-lg md:shadow-md"
           >
-            <Link to={`/blog/${relatedBlog.id}`}>
-              <img
-                src={relatedBlog.image}
-                alt={relatedBlog.title}
-                className="mb-2 rounded-md h-32 w-full object-cover"
-              />
-              <p className="text-lg font-semibold text-gray-900 hover:underline line-clamp-3 text-ellipsis">
-                {relatedBlog.title}
-              </p>
-              <div className="flex items-center mb-2">
-                {relatedBlog.categories.map((category, index) => (
-                  <Link
-                    key={index}
-                    to={`/category/${category}`}
-                    className="text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded-full mr-2"
-                  >
-                    {category}
-                  </Link>
-                ))}
+            <Link
+              to={`/blog/${relatedBlog.id}`}
+              className="flex cursor-default md:flex md:flex-col md:gap-4 md:p-4 md:text-base grid grid-cols-[150px,1fr] gap-2"
+            >
+              <div className="md:w-full md:overflow-hidden md:rounded-md w-[150px] rounded-md overflow-hidden">
+                <img
+                  src={relatedBlog.image}
+                  alt={relatedBlog.title}
+                  className="cursor-pointer md:w-full md:h-auto w-full h-auto rounded-md hover:scale-110 ease-in-out duration-300"
+                />
               </div>
-              <div className="flex items-center mb-4">
-                By
-                <Link
-                  to={`/author/${
-                    getAuthors().find((author) => author.id === blog.authorId)
-                      ?.Name
-                  }`}
-                  className="flex ml-1"
-                >
-                  <p className="text-blue-400 font-medium">
-                    {
+              <div className="flex-1">
+                <p className="text-lg font-semibold text-gray-900 hover:underline line-clamp-2 md:line-clamp-3 text-ellipsis">
+                  {relatedBlog.title}
+                </p>
+                <div className="flex items-center mb-2 hidden md:block">
+                  {relatedBlog.categories.map((category, index) => (
+                    <Link
+                      key={index}
+                      to={`/category/${category}`}
+                      className="text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded-full mr-2"
+                    >
+                      {category}
+                    </Link>
+                  ))}
+                </div>
+                <div className="flex items-center mb-2 gap-1">
+                  <Link
+                    to={`/author/${
                       getAuthors().find((author) => author.id === blog.authorId)
                         ?.Name
-                    }{" "}
-                  </p>
-                </Link>
-                -<p className="text-gray-600">{blog.createdDate}</p>
+                    }`}
+                    className="flex"
+                  >
+                    <p className="text-blue-400 font-medium">
+                      {
+                        getAuthors().find(
+                          (author) => author.id === blog.authorId,
+                        )?.Name
+                      }{" "}
+                    </p>
+                  </Link>
+                  -<p className="text-gray-600">{blog.createdDate}</p>
+                </div>
               </div>
             </Link>
           </div>
@@ -294,17 +286,20 @@ const BlogDetails = () => {
       </div>
 
       <div className="mt-8 w-full">
-        <h2 className="text-2xl font-semibold mb-4 text-center font-inter">
-          CATEGORIES
-        </h2>
-        <div className="w-full md:grid md:grid-cols-2 md:gap-2 flex flex-wrap justify-center gap-4">
+        <div className="mb-4 w-full border-b-2 border-black flex items-start">
+          <p className="text-xl font-semibold bg-black text-white inline px-2 py-1">
+            CATEGORIES
+          </p>
+        </div>
+        <div className="w-full gap-4">
           {Object.keys(blogCountPerCategory).map((category) => (
             <Link
               key={category}
               to={`/category/${category}`}
-              className="text-indigo-500 hover:underline"
+              className="w-full flex items-center justify-between block text-black hover:text-[#4db1eb] hover:underline text-[17px]"
             >
-              {category} ({blogCountPerCategory[category]})
+              <span>{category}</span>
+              <span>{blogCountPerCategory[category]}</span>
             </Link>
           ))}
         </div>

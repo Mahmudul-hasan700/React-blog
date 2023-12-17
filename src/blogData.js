@@ -2,6 +2,395 @@
 
 const blogs = [
   {
+    id: 11,
+    title: "Create A Beautiful Responsive Website in HTML and CSS",
+    content: `
+      Reinvention often comes in spurts, after a long period of silence.`,
+    image:
+      "https://www.codingnepalweb.com/wp-content/uploads/2023/09/Create-A-Beautiful-Responsive-Website-in-HTML-and-CSS-1068x601.jpg",
+    categories: ["HTML and CSS"],
+    tags: [
+      "coding",
+      "CSS",
+      "CSS Login Form",
+      "Frontend",
+      "glassmorphism",
+      "Login Form",
+      "Html",
+      "Html login Form",
+    ],
+    createdDate: "2023-12-16",
+    authorId: 2,
+  },
+  {
+    id: 10,
+    title: "Create A Beautiful Responsive Website in HTML and CSS",
+    content: `
+      Reinvention often comes in spurts, after a long period of silence.`,
+    image:
+      "https://www.codingnepalweb.com/wp-content/uploads/2023/09/Create-A-Beautiful-Responsive-Website-in-HTML-and-CSS-1068x601.jpg",
+    categories: ["HTML and CSS"],
+    tags: [
+      "coding",
+      "CSS",
+      "CSS Login Form",
+      "Frontend",
+      "glassmorphism",
+      "Login Form",
+      "Html",
+      "Html login Form",
+    ],
+    createdDate: "2023-12-16",
+    authorId: 2,
+  },
+  {
+    id: 9,
+    title: "Create A Beautiful Responsive Website in HTML and CSS",
+    content: `
+      Reinvention often comes in spurts, after a long period of silence.`,
+    image:
+      "https://www.codingnepalweb.com/wp-content/uploads/2023/09/Create-A-Beautiful-Responsive-Website-in-HTML-and-CSS-1068x601.jpg",
+    categories: ["HTML and CSS"],
+    tags: [
+      "coding",
+      "CSS",
+      "CSS Login Form",
+      "Frontend",
+      "glassmorphism",
+      "Login Form",
+      "Html",
+      "Html login Form",
+    ],
+    createdDate: "2023-12-16",
+    authorId: 2,
+  },
+  {
+    id: 8,
+    title: "Create A Beautiful Responsive Website in HTML and CSS",
+    content: `
+      Reinvention often comes in spurts, after a long period of silence.`,
+    image:
+      "https://www.codingnepalweb.com/wp-content/uploads/2023/09/Create-A-Beautiful-Responsive-Website-in-HTML-and-CSS-1068x601.jpg",
+    categories: ["HTML and CSS"],
+    tags: [
+      "coding",
+      "CSS",
+      "CSS Login Form",
+      "Frontend",
+      "glassmorphism",
+      "Login Form",
+      "Html",
+      "Html login Form",
+    ],
+    createdDate: "2023-12-16",
+    authorId: 2,
+  },
+  {
+    id: 4,
+    title: "Create A Beautiful Responsive Website in HTML and CSS",
+    content: `
+      In today’s age, having a basic understanding of web development can be incredibly useful. Whether you want to showcase your portfolio, start a blog, or just experiment with web design, creating a simple website homepage is a great place to start.
+      <br><br>
+In this beginner-friendly post, I’ll guide you through the process of creating your first website homepage using HTML and CSS. You’ll learn how to build an interactive homepage featuring a navigation bar, place elements on the page, and style them to make your website visually appealing and engaging.
+      <br><br>
+To create a responsive website homepage, we will use commonly used HTML elements like div, h2, h1, and button, as well as basic CSS properties. This project is beginner-friendly, so you should have no trouble following along.
+      <br><br>
+<h1 class="text-2xl font-semibold">
+Steps to Create Website Homepage HTML & CSS
+</h1>
+<br><br>
+To create a responsive website homepage using HTML and CSS, follow these simple step-by-step instructions:
+<br><br>
+<ul class="list-inside list-disc">
+<li class="mt-3 >
+First, create a folder with any name you like. Then, make the necessary files inside it.
+</li>
+<li class="mt-3 >
+Create a file called <code>index.html</code> to serve as the main file.
+</li>
+<li class="mt-3" >
+Create a file called <code>style.css</code> for the CSS code.
+</li>
+</ul>
+<br><br>
+To start, add the following HTML codes to your index.html file: This code includes essential HTML markup with different semantic tags like header, nav, h2, div, p, ul, li, buttons, etc. to create a website homepage.
+<br><br>
+<div class="code-container overflow-auto max-h-[600px]">
+    <pre><code class="language-html line-numbers">
+&lt;!DOCTYPE html&gt;
+&lt;!-- Coding By CodingNepal - www.codingnepalweb.com --&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;Responsive Website Homepage HTML and CSS | CodingNepal&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header class="header"&gt;
+    &lt;nav class="navbar"&gt;
+      &lt;h2 class="logo"&gt;&lt;a href="#"&gt;CodingNepal&lt;/a&gt;&lt;/h2&gt;
+      &lt;input type="checkbox" id="menu-toggle" /&gt;
+      &lt;label for="menu-toggle" id="hamburger-btn"&gt;
+        &lt;svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"&gt;
+          &lt;path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/&gt;
+        &lt;/svg&gt;
+      &lt;/label&gt;
+      &lt;ul class="links"&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;About Us&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Services&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Contact Us&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;div class="buttons"&gt;
+        &lt;a href="#" class="signin"&gt;Sign In&lt;/a&gt;
+        &lt;a href="#" class="signup"&gt;Sign Up&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+  &lt;section class="hero-section"&gt;
+    &lt;div class="hero"&gt;
+      &lt;h2&gt;Mobile App Development&lt;/h2&gt;
+      &lt;p&gt; Join us in the exciting world of programming and turn your ideas into reality. Unlock the world of endless possibilities - learn to code and shape the digital future with us. &lt;/p&gt;
+      &lt;div class="buttons"&gt;
+        &lt;a href="#" class="join"&gt;Join Now&lt;/a&gt;
+        &lt;a href="#" class="learn"&gt;Learn More&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="img"&gt;
+      &lt;img src="https://www.codingnepalweb.com/demos/create-responsive-website-html-css/hero-bg.png" alt="hero image" /&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </div>
+
+<br><br>
+Next, add the following CSS codes to your style.css file to apply visual styling to the homepage, like color, font, background, etc. After that, you can view your attractive and responsive website homepage by loading the web page in your browser.
+<br><br>
+<div class="code-container overflow-auto max-h-[600px] relative">
+  <pre id="css-code" class="line-numbers rounded-md"><code class="language-css">
+/* Importing Google font - Open Sans */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(to bottom, #175d69 23%, #330c43 95%);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 15px;
+}
+
+.navbar .logo a {
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.navbar .links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 35px;
+}
+
+.navbar .links a {
+  font-weight: 500;
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 0;
+  transition: 0.2s ease;
+}
+
+.navbar .links a:hover {
+  color: #47b2e4;
+}
+
+.navbar .buttons a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  padding: 15px 0;
+  transition: 0.2s ease;
+}
+
+.navbar .buttons a:not(:last-child) {
+  margin-right: 30px;
+}
+
+.navbar .buttons .signin:hover {
+  color: #47b2e4;
+}
+
+.navbar .buttons .signup {
+  border: 1px solid #fff;
+  padding: 10px 20px;
+  border-radius: 0.375rem;
+  text-align: center;
+  transition: 0.2s ease;
+}
+
+.navbar .buttons .signup:hover {
+  background-color: #47b2e4;
+  color: #fff;
+}
+
+.hero-section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 95vh;
+  padding: 0 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-section .hero {
+  max-width: 50%;
+  color: #fff;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #c9c7c7;
+}
+
+.hero-section .img img {
+  width: 517px;
+}
+
+.hero-section .buttons {
+  margin-top: 40px;
+}
+
+.hero-section .buttons a {
+  text-decoration: none;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  transition: 0.2s ease;
+  display: inline-block;
+}
+
+.hero-section .buttons a:not(:last-child) {
+  margin-right: 15px;
+}
+
+.buttons .join {
+  background-color: #47b2e4;
+}
+
+.hero-section .buttons .learn {
+  border: 1px solid #fff;
+  border-radius: 0.375rem;
+}
+
+.hero-section .buttons a:hover {
+  background-color: #47b2e4;
+}
+
+/* Hamburger menu styles */
+#menu-toggle {
+  display: none;
+}
+
+#hamburger-btn {
+  font-size: 1.8rem;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+  order: 1;
+}
+
+@media screen and (max-width: 1023px) {
+  .navbar .logo a {
+    font-size: 1.5rem;
+  }
+
+  .links {
+    position: fixed;
+    left: -100%;
+    top: 75px;
+    width: 100%;
+    height: 100vh;
+    padding-top: 50px;
+    background: #175d69;
+    flex-direction: column;
+    transition: 0.3s ease;
+  }
+
+  .navbar #menu-toggle:checked ~ .links {
+    left: 0;
+  }
+
+  .navbar #hamburger-btn {
+    display: block;
+  }
+
+  .header .buttons {
+    display: none;
+  }
+
+  .hero-section .hero {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-section img {
+    display: none;
+  }
+}
+</code></pre>
+</div>
+<br><br>
+<div class="code-container">
+    <pre>
+      <code class="language-javascript line-numbers">
+        function greet() {
+          console.log("Hello, world!");
+        }
+      </code>
+    </pre>
+  </div>
+      `,
+    image:
+      "https://www.codingnepalweb.com/wp-content/uploads/2023/09/Create-A-Beautiful-Responsive-Website-in-HTML-and-CSS-1068x601.jpg",
+    categories: ["HTML and CSS"],
+    createdDate: "2023-12-15",
+    authorId: 2,
+  },
+
+  {
     id: 1,
     title:
       "Architectural Engineering Wonders of the Modern Era for Your Inspiration",
@@ -62,18 +451,6 @@ const blogs = [
     categories: ["Technology"],
     createdDate: "2023-12-10",
     authorId: 3,
-  },
-  {
-    id: 4,
-    title:
-      "â€˜Nobody knows what really happenedâ€™ â€“ Barcelona star still â€˜shockedâ€™ by Lionel Messi exit as Sergi Roberto reacts to rumours of reuniting with Argentine icon at MLS side Inter Miami",
-    content: `
-      Reinvention often comes in spurts, after a long period of silence.`,
-    image:
-      "https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/bltbb4435364eedb077/65784e43a11649040ae45dca/GOAL_-_Blank_WEB_-_Facebook_-_2023-12-12T121230.076.png?auto=webp&format=pjpg&width=2048&quality=60",
-    categories: ["Football", " Messi"],
-    createdDate: "2023-12-11", // Add a created date
-    authorId: 1,
   },
   {
     id: 5,
