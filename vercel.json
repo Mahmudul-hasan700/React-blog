@@ -11,5 +11,5 @@
     { "source": "/terms-conditions", "destination": "/index.html" },
     { "source": "/author/:authorName", "destination": "/index.html" },
     { "source": "/:path*", "destination": "/index.html" }
-  ],
+  ]
 }
