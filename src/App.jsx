@@ -42,7 +42,10 @@ const App = () => {
             <Route path="/category/:category" element={<CategoryPage />} />
             <Route path="/tag/:tag" element={<TagPage />} />
             <Route path="/search/all/:term" element={<AllSearchResults />} />
-            <Route path="/search" element={<Search searchTerm={searchTerm} />} />
+            <Route
+              path="/search"
+              element={<Search searchTerm={searchTerm} />}
+            />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />

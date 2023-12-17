@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
+.nav-active {
+  background-color: #5182b8;
+  color: #fff;
+  border-radius: 4px;
+}
+
 .code-container {
   position: relative;
   border-radius: 5px;

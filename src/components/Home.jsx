@@ -1,10 +1,15 @@
-// src/components/Home.jsx
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuthors } from "../Authors.js";
 import { getBlogs } from "../blogData.js";
 
 const Home = ({ searchTerm }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
   const myStyle = {
     fontFamily: "Inter, sans-serif",
   };
@@ -12,39 +17,32 @@ const Home = ({ searchTerm }) => {
   const pageSize = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Get filtered blogs based on the search term
   const filteredBlogs = getBlogs().filter((blog) =>
     blog.title.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
-  // Calculate the start and end index of blogs for the current page
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
   const displayedBlogs = filteredBlogs.slice(startIndex, endIndex);
 
-  // Calculate the total number of pages
   const totalPages = Math.ceil(filteredBlogs.length / pageSize);
 
-  // Function to handle page change
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
-  // Function to handle next page
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
   };
 
-  // Function to handle previous page
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
 
-  // Function to count the number of blogs per category
   const countBlogsPerCategory = () => {
     const blogCountPerCategory = {};
 
@@ -63,6 +61,42 @@ const Home = ({ searchTerm }) => {
 
   const blogCountPerCategory = countBlogsPerCategory();
 
+  const shouldShowPagination = totalPages > 1;
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    const maxVisiblePages = 3;
+
+    const startPage =
+      currentPage <= Math.floor(maxVisiblePages / 2)
+        ? 1
+        : Math.min(
+            currentPage - Math.floor(maxVisiblePages / 2),
+            totalPages - maxVisiblePages + 1,
+          );
+
+    const endPage = Math.min(startPage + maxVisiblePages - 1, totalPages);
+
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(
+        <button
+          key={i}
+          onClick={() => handlePageChange(i)}
+          className={`flex items-center justify-center p-3 h-8 me-3 text-sm font-medium text-gray-500 border border-gray-300 rounded-sm ${
+            currentPage === i
+              ? "text-black border border-gray-300"
+              : "text-gray-700 border-none"
+          }`}
+        >
+          {i}
+        </button>,
+      );
+    }
+
+    return pageNumbers.map((button, index) => (
+      <span key={index}>{button}</span>
+    ));
+  };
+
   return (
     <div className="w-full">
       <h2 className="text-2xl font-semibold mb-4 text-center" style={myStyle}>
@@ -78,11 +112,18 @@ const Home = ({ searchTerm }) => {
               to={`/blog/${blog.id}`}
               className="flex cursor-default md:flex md:flex-col md:gap-4 md:p-4 md:text-base grid grid-cols-[150px,1fr] gap-2"
             >
-              <div className="md:w-full md:overflow-hidden md:rounded-md w-[150px] rounded-md">
+              <div
+                className={`md:w-full md:overflow-hidden md:rounded-md w-[150px] rounded-md overflow-hidden ${
+                  imageLoaded ? "opacity-100" : "animate-pulse"
+                }`}
+              >
                 <img
                   src={blog.image}
                   alt={blog.title}
-                  className="cursor-pointer md:w-full md:h-auto w-full h-auto rounded-md"
+                  className={`cursor-pointer md:w-full md:h-auto w-full h-auto rounded-md hover:scale-110 ease-in-out duration-300 ${
+                    imageLoaded ? "opacity-100" : "hidden"
+                  }`}
+                  onLoad={handleImageLoad}
                 />
               </div>
               <div className="flex-1">
@@ -96,7 +137,7 @@ const Home = ({ searchTerm }) => {
                   {blog.categories.map((category, index) => (
                     <Link
                       key={index}
-                      to={`/category/${category}`} // Link to the category page
+                      to={`/category/${category}`}
                       className="text-sm text-indigo-500 bg-indigo-100 px-2 py-1 rounded-full mr-2"
                     >
                       {category}
@@ -119,7 +160,10 @@ const Home = ({ searchTerm }) => {
                       }{" "}
                     </p>
                   </Link>
-                  -<p className="text-gray-600 text-[14px]">{blog.createdDate}</p>
+                  -
+                  <p className="text-gray-600 text-[14px]">
+                    {blog.createdDate}
+                  </p>
                 </div>
               </div>
             </Link>
@@ -127,59 +171,49 @@ const Home = ({ searchTerm }) => {
         ))}
       </div>
 
-      {/* Pagination */}
-      <div className="flex items-center justify-center mt-4">
-        <button
-          onClick={handlePrevPage}
-          className={`flex items-center justify-center gap-2 px-3 h-8 me-3 text-sm font-medium text-gray-500 border border-gray-300 rounded-lg ${
-            currentPage === 1
-              ? "bg-gray-200 text-gray-700 cursor-not-allowed"
-              : "bg-[#4db1eb] text-white border-none"
-          }`}
-          disabled={currentPage === 1}
-        >
-          {" "}
-          <i className=" fas fa-arrow-left"></i> Previous
-        </button>
-        {Array.from({ length: totalPages }).map((_, index) => (
+      {shouldShowPagination && (
+        <div className="flex items-center justify-center mt-4">
           <button
-            key={index}
-            onClick={() => handlePageChange(index + 1)}
-            className={`flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 border border-gray-300 rounded-lg ${
-              currentPage === index + 1
-                ? "bg-[#4db1eb] text-white border-none"
-                : "bg-gray-200 text-gray-700"
+            onClick={handlePrevPage}
+            className={`flex items-center justify-center gap-2 px-3 h-8 me-3 text-sm font-medium text-gray-500 border border-gray-300 rounded-sm disabled:opacity-0 ${
+              currentPage === 1
+                ? "bg-gray-200 text-gray-700 cursor-not-allowed"
+                : "bg-gray-200 text-black border-none"
             }`}
+            disabled={currentPage === 1}
           >
-            {index + 1}
+            <i class="fa-solid fa-chevron-left"></i>
           </button>
-        ))}
-        <button
-          onClick={handleNextPage}
-          className={`flex items-center justify-center gap-2 px-3 h-8 me-3 text-sm font-medium text-gray-500 border border-gray-300 rounded-lg ${
-            currentPage === totalPages
-              ? "bg-gray-200 text-gray-700 cursor-not-allowed"
-              : "bg-[#4db1eb] text-white border-none"
-          }`}
-          disabled={currentPage === totalPages}
-        >
-          Next <i className="fas fa-arrow-right"></i>
-        </button>
-      </div>
+          {renderPageNumbers()}
+          <button
+            onClick={handleNextPage}
+            className={`flex items-center justify-center gap-2 px-3 h-8 me-3 text-sm font-medium text-gray-500 border border-gray-300 rounded-sm disabled:opacity-0 ${
+              currentPage === totalPages
+                ? "bg-gray-200 text-gray-700 cursor-not-allowed"
+                : "bg-gray-200 text-black border-none"
+            }`}
+            disabled={currentPage === totalPages}
+          >
+            <i className="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      )}
 
-      {/* Category List */}
       <div className="mt-8 w-full">
-        <h2 className="text-2xl font-semibold mb-4 text-center font-inter">
-          CATEGORIES
-        </h2>
-        <div className="w-full md:grid md:grid-cols-2 md:gap-2 flex flex-wrap justify-center gap-4">
+        <div className="mb-4 w-full border-b-2 border-black flex items-start">
+          <p className="text-xl font-semibold bg-black text-white inline px-2 py-1">
+            CATEGORIES
+          </p>
+        </div>
+        <div className="w-full gap-4">
           {Object.keys(blogCountPerCategory).map((category) => (
             <Link
               key={category}
               to={`/category/${category}`}
-              className="text-indigo-500 hover:underline text-[17px]"
+              className="w-full flex items-center justify-between block text-black hover:text-[#4db1eb] hover:underline text-[17px]"
             >
-              {category} ({blogCountPerCategory[category]})
+              <span>{category}</span>
+              <span>{blogCountPerCategory[category]}</span>
             </Link>
           ))}
         </div>
